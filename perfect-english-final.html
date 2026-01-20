@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect English | Professional English Teaching & Resources</title>
+    <meta name="description" content="Professional English teaching with a focus on business communication and British culture. Based in Palma, Mallorca.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f5f7fa;
+        }
+        
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #2d3748;
+        }
+        
+        nav .logo span {
+            color: #4299e1;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #4299e1;
+        }
+        
+        /* Hero - Platform Style */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+        }
+        
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+        
+        .hero-text p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .hero-features {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-list li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+            color: #48bb78;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        /* Main Resource Grid */
+        .resources-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            color: #718096;
+        }
+        
+        .resource-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            border-color: #4299e1;
+        }
+        
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .category-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #2d3748;
+        }
+        
+        .category-card p {
+            color: #718096;
+            margin-bottom: 1rem;
+        }
+        
+        .resource-count {
+            display: inline-block;
+            background: #e6f7ff;
+            color: #0066cc;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        /* About Teaching Section */
+        .teaching-approach {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .approach-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        
+        .approach-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #2d3748;
+        }
+        
+        .approach-content p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .approach-highlights {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .highlight-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .highlight-item:last-child {
+            border-bottom: none;
+        }
+        
+        .highlight-item h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .highlight-item p {
+            color: #718096;
+            font-size: 0.95rem;
+        }
+        
+        /* Testimonials - Compact */
+        .testimonials-compact {
+            background: #2d3748;
+            color: white;
+            padding: 3rem 2rem;
+        }
+        
+        .testimonials-compact .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .testimonials-compact h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        
+        .testimonial-slider {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-compact {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #4299e1;
+        }
+        
+        .testimonial-compact p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author-compact {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #4299e1;
+        }
+        
+        /* Contact CTA */
+        .contact-cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .contact-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-cta p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .contact-cta a {
+            color: white;
+            font-weight: 600;
+            font-size: 1.4rem;
+            text-decoration: none;
+            border-bottom: 2px solid white;
+            padding-bottom: 0.2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a202c;
+            color: #a0aec0;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        /* Mobile */
+        @media (max-width: 968px) {
+            .hero-content,
+            .approach-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .testimonial-slider {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">Perfect <span>English</span></div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Learn English<br>The Smart Way</h1>
+                <p>Interactive resources, personalised teaching, and real-world business English for professionals who mean business.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Years Teaching</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Access</span>
+                    </div>
+                </div>
+                <a href="#contact" class="cta-button">Start Learning Today</a>
+            </div>
+            <div class="hero-features">
+                <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">What You Get</h3>
+                <ul class="feature-list">
+                    <li>Interactive grammar and vocabulary exercises</li>
+                    <li>Business English for your industry</li>
+                    <li>British culture and idiom guides</li>
+                    <li>Personalised one-on-one teaching</li>
+                    <li>Accessible anytime, on any device</li>
+                    <li>Resources tailored to your goals</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <section class="resources-main" id="resources">
+        <div class="section-header">
+            <h2>Explore Learning Resources</h2>
+            <p>Everything you need to master English for professional success</p>
+        </div>
+        
+        <div class="resource-categories">
+            <div class="category-card">
+                <div class="category-icon">📚</div>
+                <h3>Grammar Library</h3>
+                <p>Comprehensive guides covering all aspects of English grammar with interactive exercises</p>
+                <span class="resource-count">Coming soon</span>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-icon">💼</div>
+                <h3>Business English</h3>
+                <p>Industry-specific vocabulary, email templates, and professional communication strategies</p>
+                <span class="resource-count">Coming soon</span>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-icon">🇬🇧</div>
+                <h3>British Culture</h3>
+                <p>Idioms, customs, and cultural insights that make your English sound authentically British</p>
+                <span class="resource-count">Coming soon</span>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-icon">✍️</div>
+                <h3>Writing Skills</h3>
+                <p>From emails to reports, master professional writing with examples and practice exercises</p>
+                <span class="resource-count">Coming soon</span>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-icon">🎧</div>
+                <h3>Listening Practice</h3>
+                <p>Develop your ear for British accents and improve comprehension with audio exercises</p>
+                <span class="resource-count">Coming soon</span>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-icon">💬</div>
+                <h3>Conversation Skills</h3>
+                <p>Discussion topics, debate materials, and strategies for confident speaking</p>
+                <span class="resource-count">Coming soon</span>
+            </div>
+        </div>
+    </section>
+    
+    <section class="teaching-approach" id="about">
+        <div class="approach-grid">
+            <div class="approach-content">
+                <h2>Personalised Teaching Meets Digital Resources</h2>
+                <p>Since 2013, I've been helping professionals master English for their specific industries and goals. Based in Palma, Mallorca, I teach online via Zoom, focusing on business English and British culture for working professionals.</p>
+                <p>The resource library complements personalised one-on-one teaching sessions. While the modules provide structure and practice, our live sessions focus on your specific needs, industry vocabulary, and real-world application.</p>
+                <p>This hybrid approach means you're never wasting time in class on things you can learn independently, and you're never struggling alone with concepts that benefit from expert guidance.</p>
+            </div>
+            
+            <div class="approach-highlights">
+                <div class="highlight-item">
+                    <h4>📋 Personalised Learning Plans</h4>
+                    <p>Custom curriculum based on your industry, goals, and learning style</p>
+                </div>
+                <div class="highlight-item">
+                    <h4>⚖️ Legal English Expertise</h4>
+                    <p>Specialised teaching for legal professionals including family law, tax law, and commercial law</p>
+                </div>
+                <div class="highlight-item">
+                    <h4>🏨 Hospitality Industry Focus</h4>
+                    <p>Business English for hotel staff, from headquarters teams to guest-facing roles</p>
+                </div>
+                <div class="highlight-item">
+                    <h4>💻 Flexible Online Learning</h4>
+                    <p>Access resources 24/7, schedule live Zoom sessions when convenient</p>
+                </div>
+                <div class="highlight-item">
+                    <h4>🇬🇧 Cultural Fluency</h4>
+                    <p>Learn not just language but British communication styles and cultural context</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="testimonials-compact">
+        <div class="container">
+            <h2>What Students Say</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial-compact">
+                    <p>"Classes based around the specific vocabulary which I use in my day to day work, and which are always interesting. Lots of new ideas and ways to learn, constantly making me want to work harder."</p>
+                    <div class="testimonial-author-compact">José Davila, MD, Athlos Barbell Club</div>
+                </div>
+                <div class="testimonial-compact">
+                    <p>"Classes are very broad, ranging from discussions of current affairs to conversation, grammar, listening and writing exercises. Being a lawyer, it is also very useful to have the possibility to improve my legal vocabulary, which is uncommon."</p>
+                    <div class="testimonial-author-compact">Pedro San José, Partner, Cuatrecasas</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="contact-cta" id="contact">
+        <h2>Ready to Perfect Your English?</h2>
+        <p>Let's create a personalised learning plan for you</p>
+        <a href="mailto:james@perfect-english.org">james@perfect-english.org</a>
+    </section>
+    
+    <footer>
+        <p>&copy; 2026 Perfect English. Professional English teaching and resources. Based in Palma, Mallorca.</p>
+    </footer>
+</body>
+</html>
