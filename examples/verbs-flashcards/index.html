@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spanish Flashcards | Perfect English</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            color: #718096;
+            font-size: 1.1rem;
+        }
+        
+        .level-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .progress-info {
+            font-size: 1rem;
+            color: #4a5568;
+            font-weight: 500;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #4a5568;
+        }
+        
+        .btn-secondary:hover {
+            background: #2d3748;
+        }
+        
+        .flashcard-container {
+            perspective: 1000px;
+            margin-bottom: 2rem;
+        }
+        
+        .flashcard {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            cursor: pointer;
+        }
+        
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+        
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .card-front {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .card-back {
+            background: white;
+            border: 3px solid #667eea;
+            transform: rotateY(180deg);
+        }
+        
+        .card-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        
+        .card-word {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .card-pronunciation {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-example {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            text-align: center;
+            margin-top: 1rem;
+            line-height: 1.6;
+        }
+        
+        .card-back .card-word {
+            color: #667eea;
+        }
+        
+        .card-back .card-label,
+        .card-back .card-pronunciation,
+        .card-back .card-example {
+            color: #4a5568;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .nav-btn {
+            padding: 1rem 2rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-width: 120px;
+        }
+        
+        .nav-btn:hover:not(:disabled) {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+        
+        .nav-btn:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+        }
+        
+        .card-counter {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #4a5568;
+        }
+        
+        .hint {
+            text-align: center;
+            color: #718096;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .flashcard {
+                height: 350px;
+            }
+            
+            .card-word {
+                font-size: 2.5rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+            
+            .button-group {
+                width: 100%;
+            }
+            
+            .btn {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Spanish Flashcards</h1>
+            <p>Essential A2 verbs for everyday conversation</p>
+            <span class="level-badge">Level: A2 Elementary</span>
+        </div>
+        
+        <div class="controls">
+            <div class="progress-info">
+                <span id="learned-count">0</span> of 30 learned
+            </div>
+            <div class="button-group">
+                <button class="btn" onclick="shuffleCards()">🔀 Shuffle</button>
+                <button class="btn btn-secondary" onclick="resetProgress()">↺ Reset</button>
+            </div>
+        </div>
+        
+        <div class="flashcard-container">
+            <div class="flashcard" id="flashcard" onclick="flipCard()">
+                <div class="card-face card-front">
+                    <div class="card-label">Spanish</div>
+                    <div class="card-word" id="spanish-word">hablar</div>
+                    <div class="card-pronunciation" id="pronunciation">(ah-BLAR)</div>
+                    <div class="card-example" id="spanish-example">Yo hablo español</div>
+                </div>
+                <div class="card-face card-back">
+                    <div class="card-label">English</div>
+                    <div class="card-word" id="english-word">to speak</div>
+                    <div class="card-pronunciation" id="english-pronunciation">(speek)</div>
+                    <div class="card-example" id="english-example">I speak Spanish</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hint">💡 Click the card to flip it</div>
+        
+        <div class="navigation">
+            <button class="nav-btn" id="prev-btn" onclick="previousCard()">← Previous</button>
+            <div class="card-counter">
+                <span id="current-card">1</span> / <span id="total-cards">30</span>
+            </div>
+            <button class="nav-btn" id="next-btn" onclick="nextCard()">Next →</button>
+        </div>
+    </div>
+    
+    <script>
+        const verbs = [
+            {
+                spanish: "ser",
+                pronunciation: "(sehr)",
+                english: "to be",
+                englishPronunciation: "(bee)",
+                spanishExample: "Yo soy profesor",
+                englishExample: "I am a teacher",
+                learned: false
+            },
+            {
+                spanish: "estar",
+                pronunciation: "(eh-STAR)",
+                english: "to be",
+                englishPronunciation: "(bee)",
+                spanishExample: "Estoy cansado",
+                englishExample: "I am tired",
+                learned: false
+            },
+            {
+                spanish: "tener",
+                pronunciation: "(teh-NEHR)",
+                english: "to have",
+                englishPronunciation: "(hav)",
+                spanishExample: "Tengo un coche",
+                englishExample: "I have a car",
+                learned: false
+            },
+            {
+                spanish: "hacer",
+                pronunciation: "(ah-SEHR)",
+                english: "to do / to make",
+                englishPronunciation: "(doo / mayk)",
+                spanishExample: "Hago ejercicio",
+                englishExample: "I do exercise",
+                learned: false
+            },
+            {
+                spanish: "ir",
+                pronunciation: "(eer)",
+                english: "to go",
+                englishPronunciation: "(goh)",
+                spanishExample: "Voy al trabajo",
+                englishExample: "I go to work",
+                learned: false
+            },
+            {
+                spanish: "poder",
+                pronunciation: "(poh-DEHR)",
+                english: "can / to be able",
+                englishPronunciation: "(kan / AY-bl)",
+                spanishExample: "Puedo ayudarte",
+                englishExample: "I can help you",
+                learned: false
+            },
+            {
+                spanish: "decir",
+                pronunciation: "(deh-SEER)",
+                english: "to say / to tell",
+                englishPronunciation: "(say / tel)",
+                spanishExample: "Digo la verdad",
+                englishExample: "I tell the truth",
+                learned: false
+            },
+            {
+                spanish: "querer",
+                pronunciation: "(keh-REHR)",
+                english: "to want / to love",
+                englishPronunciation: "(wont / luv)",
+                spanishExample: "Quiero café",
+                englishExample: "I want coffee",
+                learned: false
+            },
+            {
+                spanish: "dar",
+                pronunciation: "(dar)",
+                english: "to give",
+                englishPronunciation: "(giv)",
+                spanishExample: "Doy clases",
+                englishExample: "I give classes",
+                learned: false
+            },
+            {
+                spanish: "saber",
+                pronunciation: "(sah-BEHR)",
+                english: "to know",
+                englishPronunciation: "(noh)",
+                spanishExample: "Sé inglés",
+                englishExample: "I know English",
+                learned: false
+            },
+            {
+                spanish: "ver",
+                pronunciation: "(behr)",
+                english: "to see",
+                englishPronunciation: "(see)",
+                spanishExample: "Veo la televisión",
+                englishExample: "I watch television",
+                learned: false
+            },
+            {
+                spanish: "llegar",
+                pronunciation: "(yeh-GAR)",
+                english: "to arrive",
+                englishPronunciation: "(uh-RYVE)",
+                spanishExample: "Llego a las nueve",
+                englishExample: "I arrive at nine",
+                learned: false
+            },
+            {
+                spanish: "salir",
+                pronunciation: "(sah-LEER)",
+                english: "to leave / to go out",
+                englishPronunciation: "(leev / goh owt)",
+                spanishExample: "Salgo de casa",
+                englishExample: "I leave home",
+                learned: false
+            },
+            {
+                spanish: "venir",
+                pronunciation: "(beh-NEER)",
+                english: "to come",
+                englishPronunciation: "(kum)",
+                spanishExample: "Vengo mañana",
+                englishExample: "I come tomorrow",
+                learned: false
+            },
+            {
+                spanish: "hablar",
+                pronunciation: "(ah-BLAR)",
+                english: "to speak",
+                englishPronunciation: "(speek)",
+                spanishExample: "Hablo español",
+                englishExample: "I speak Spanish",
+                learned: false
+            },
+            {
+                spanish: "comer",
+                pronunciation: "(koh-MEHR)",
+                english: "to eat",
+                englishPronunciation: "(eet)",
+                spanishExample: "Como paella",
+                englishExample: "I eat paella",
+                learned: false
+            },
+            {
+                spanish: "vivir",
+                pronunciation: "(bee-BEER)",
+                english: "to live",
+                englishPronunciation: "(liv)",
+                spanishExample: "Vivo en España",
+                englishExample: "I live in Spain",
+                learned: false
+            },
+            {
+                spanish: "trabajar",
+                pronunciation: "(trah-bah-HAR)",
+                english: "to work",
+                englishPronunciation: "(wurk)",
+                spanishExample: "Trabajo en una oficina",
+                englishExample: "I work in an office",
+                learned: false
+            },
+            {
+                spanish: "estudiar",
+                pronunciation: "(ehs-too-dee-AR)",
+                english: "to study",
+                englishPronunciation: "(STUD-ee)",
+                spanishExample: "Estudio español",
+                englishExample: "I study Spanish",
+                learned: false
+            },
+            {
+                spanish: "escribir",
+                pronunciation: "(ehs-kree-BEER)",
+                english: "to write",
+                englishPronunciation: "(ryte)",
+                spanishExample: "Escribo emails",
+                englishExample: "I write emails",
+                learned: false
+            },
+            {
+                spanish: "leer",
+                pronunciation: "(leh-EHR)",
+                english: "to read",
+                englishPronunciation: "(reed)",
+                spanishExample: "Leo libros",
+                englishExample: "I read books",
+                learned: false
+            },
+            {
+                spanish: "comprar",
+                pronunciation: "(kohm-PRAR)",
+                english: "to buy",
+                englishPronunciation: "(bye)",
+                spanishExample: "Compro comida",
+                englishExample: "I buy food",
+                learned: false
+            },
+            {
+                spanish: "vender",
+                pronunciation: "(behn-DEHR)",
+                english: "to sell",
+                englishPronunciation: "(sel)",
+                spanishExample: "Vendo coches",
+                englishExample: "I sell cars",
+                learned: false
+            },
+            {
+                spanish: "beber",
+                pronunciation: "(beh-BEHR)",
+                english: "to drink",
+                englishPronunciation: "(drink)",
+                spanishExample: "Bebo agua",
+                englishExample: "I drink water",
+                learned: false
+            },
+            {
+                spanish: "dormir",
+                pronunciation: "(dor-MEER)",
+                english: "to sleep",
+                englishPronunciation: "(sleep)",
+                spanishExample: "Duermo ocho horas",
+                englishExample: "I sleep eight hours",
+                learned: false
+            },
+            {
+                spanish: "conocer",
+                pronunciation: "(koh-noh-SEHR)",
+                english: "to know",
+                englishPronunciation: "(noh)",
+                spanishExample: "Conozco Madrid",
+                englishExample: "I know Madrid",
+                learned: false
+            },
+            {
+                spanish: "pensar",
+                pronunciation: "(pehn-SAR)",
+                english: "to think",
+                englishPronunciation: "(think)",
+                spanishExample: "Pienso en ti",
+                englishExample: "I think about you",
+                learned: false
+            },
+            {
+                spanish: "empezar",
+                pronunciation: "(ehm-peh-SAR)",
+                english: "to start / to begin",
+                englishPronunciation: "(start / bih-GIN)",
+                spanishExample: "Empiezo a las nueve",
+                englishExample: "I start at nine",
+                learned: false
+            },
+            {
+                spanish: "terminar",
+                pronunciation: "(tehr-mee-NAR)",
+                english: "to finish",
+                englishPronunciation: "(FIN-ish)",
+                spanishExample: "Termino a las cinco",
+                englishExample: "I finish at five",
+                learned: false
+            },
+            {
+                spanish: "volver",
+                pronunciation: "(bohl-BEHR)",
+                english: "to return",
+                englishPronunciation: "(rih-TURN)",
+                spanishExample: "Vuelvo a casa",
+                englishExample: "I return home",
+                learned: false
+            }
+        ];
+        
+        let currentIndex = 0;
+        let isFlipped = false;
+        
+        function updateCard() {
+            const verb = verbs[currentIndex];
+            document.getElementById('spanish-word').textContent = verb.spanish;
+            document.getElementById('pronunciation').textContent = verb.pronunciation;
+            document.getElementById('spanish-example').textContent = verb.spanishExample;
+            document.getElementById('english-word').textContent = verb.english;
+            document.getElementById('english-pronunciation').textContent = verb.englishPronunciation;
+            document.getElementById('english-example').textContent = verb.englishExample;
+            document.getElementById('current-card').textContent = currentIndex + 1;
+            
+            // Update navigation buttons
+            document.getElementById('prev-btn').disabled = currentIndex === 0;
+            document.getElementById('next-btn').disabled = currentIndex === verbs.length - 1;
+            
+            // Reset flip state
+            if (isFlipped) {
+                flipCard();
+            }
+        }
+        
+        function flipCard() {
+            const card = document.getElementById('flashcard');
+            card.classList.toggle('flipped');
+            isFlipped = !isFlipped;
+            
+            // Mark as learned when flipping to English side
+            if (isFlipped && !verbs[currentIndex].learned) {
+                verbs[currentIndex].learned = true;
+                updateLearnedCount();
+            }
+        }
+        
+        function nextCard() {
+            if (currentIndex < verbs.length - 1) {
+                currentIndex++;
+                updateCard();
+            }
+        }
+        
+        function previousCard() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCard();
+            }
+        }
+        
+        function shuffleCards() {
+            // Fisher-Yates shuffle
+            for (let i = verbs.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [verbs[i], verbs[j]] = [verbs[j], verbs[i]];
+            }
+            currentIndex = 0;
+            updateCard();
+        }
+        
+        function resetProgress() {
+            verbs.forEach(verb => verb.learned = false);
+            updateLearnedCount();
+            currentIndex = 0;
+            updateCard();
+        }
+        
+        function updateLearnedCount() {
+            const learnedCount = verbs.filter(v => v.learned).length;
+            document.getElementById('learned-count').textContent = learnedCount;
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                nextCard();
+            } else if (e.key === 'ArrowLeft') {
+                previousCard();
+            } else if (e.key === ' ' || e.key === 'Enter') {
+                e.preventDefault();
+                flipCard();
+            }
+        });
+        
+        // Initialize
+        updateCard();
+        updateLearnedCount();
+    </script>
+</body>
+</html>
