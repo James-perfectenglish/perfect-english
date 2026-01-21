@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Phrasal Verbs Exercise | Perfect English</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            color: #718096;
+            font-size: 1.1rem;
+        }
+        
+        .instructions {
+            background: #f7fafc;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #667eea;
+        }
+        
+        .instructions h2 {
+            font-size: 1.2rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+        
+        .instructions p {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+        
+        .exercise {
+            margin-bottom: 2rem;
+        }
+        
+        .question {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .question.correct {
+            border-color: #48bb78;
+            background: #f0fff4;
+        }
+        
+        .question.incorrect {
+            border-color: #f56565;
+            background: #fff5f5;
+        }
+        
+        .question-number {
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .sentence {
+            font-size: 1.2rem;
+            color: #2d3748;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .blank {
+            display: inline-block;
+            min-width: 150px;
+            border-bottom: 2px solid #cbd5e0;
+            padding: 0 0.5rem;
+            font-weight: 600;
+            color: #667eea;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .option {
+            padding: 1rem;
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            font-weight: 500;
+            color: #2d3748;
+        }
+        
+        .option:hover {
+            border-color: #667eea;
+            background: #edf2f7;
+            transform: translateY(-2px);
+        }
+        
+        .option.selected {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .option.correct-answer {
+            background: #48bb78;
+            color: white;
+            border-color: #48bb78;
+        }
+        
+        .option.wrong-answer {
+            background: #f56565;
+            color: white;
+            border-color: #f56565;
+        }
+        
+        .option.disabled {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+        
+        .feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            display: none;
+        }
+        
+        .feedback.show {
+            display: block;
+        }
+        
+        .feedback.correct {
+            background: #c6f6d5;
+            color: #22543d;
+            border-left: 4px solid #48bb78;
+        }
+        
+        .feedback.incorrect {
+            background: #fed7d7;
+            color: #742a2a;
+            border-left: 4px solid #f56565;
+        }
+        
+        .feedback strong {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .results {
+            background: #f7fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 2rem;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .results h2 {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+        
+        .score {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #667eea;
+            margin: 1rem 0;
+        }
+        
+        .score.excellent {
+            color: #48bb78;
+        }
+        
+        .score.good {
+            color: #4299e1;
+        }
+        
+        .score.needs-practice {
+            color: #ed8936;
+        }
+        
+        .reset-btn {
+            margin-top: 1.5rem;
+            padding: 1rem 2rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .reset-btn:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .progress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: #f7fafc;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .progress-text {
+            color: #4a5568;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Business Phrasal Verbs</h1>
+            <p>Choose the correct phrasal verb for each sentence</p>
+        </div>
+        
+        <div class="instructions">
+            <h2>Instructions</h2>
+            <p>Read each sentence and select the phrasal verb that best completes it. You'll get instant feedback on your answers!</p>
+        </div>
+        
+        <div class="progress">
+            <span class="progress-text">Progress: <span id="answered">0</span>/<span id="total">8</span></span>
+            <span class="progress-text">Score: <span id="score">0</span>/<span id="total-score">8</span></span>
+        </div>
+        
+        <div class="exercise" id="exercise">
+            <!-- Questions will be inserted here by JavaScript -->
+        </div>
+        
+        <div class="results" id="results" style="display: none;">
+            <h2>Exercise Complete!</h2>
+            <div class="score" id="final-score">0/8</div>
+            <p id="result-message"></p>
+            <button class="reset-btn" onclick="resetExercise()">Try Again</button>
+        </div>
+    </div>
+    
+    <script>
+        const questions = [
+            {
+                id: 1,
+                sentence: "We need to ___________ the project deadline by two weeks.",
+                blank: "put off",
+                options: ["put off", "put up", "put on", "put through"],
+                correct: "put off",
+                explanation: "'Put off' means to postpone or delay something. We use it when moving a deadline to a later date."
+            },
+            {
+                id: 2,
+                sentence: "The CEO will ___________ the new strategy at tomorrow's meeting.",
+                blank: "set out",
+                options: ["set up", "set out", "set off", "set back"],
+                correct: "set out",
+                explanation: "'Set out' means to explain or present something clearly and in detail, especially plans or ideas."
+            },
+            {
+                id: 3,
+                sentence: "Could you ___________ this report before we send it to the client?",
+                blank: "look over",
+                options: ["look into", "look over", "look after", "look up"],
+                correct: "look over",
+                explanation: "'Look over' means to examine or review something quickly but carefully."
+            },
+            {
+                id: 4,
+                sentence: "The negotiations ___________ because both sides couldn't agree on the terms.",
+                blank: "broke down",
+                options: ["broke up", "broke down", "broke out", "broke off"],
+                correct: "broke down",
+                explanation: "'Break down' means to fail or stop working, often used for negotiations, discussions, or systems that fail."
+            },
+            {
+                id: 5,
+                sentence: "We should ___________ a meeting to discuss the budget issues.",
+                blank: "set up",
+                options: ["set out", "set up", "set off", "set down"],
+                correct: "set up",
+                explanation: "'Set up' means to arrange or organise something, like a meeting, appointment, or system."
+            },
+            {
+                id: 6,
+                sentence: "The accountant needs to ___________ these figures before the audit.",
+                blank: "go over",
+                options: ["go through", "go over", "go into", "go on"],
+                correct: "go over",
+                explanation: "'Go over' means to examine or review something carefully, often in detail."
+            },
+            {
+                id: 7,
+                sentence: "Let's ___________ from where we left off yesterday.",
+                blank: "carry on",
+                options: ["carry out", "carry on", "carry over", "carry through"],
+                correct: "carry on",
+                explanation: "'Carry on' means to continue doing something, especially after a pause or interruption."
+            },
+            {
+                id: 8,
+                sentence: "The company decided to ___________ the contract with the supplier.",
+                blank: "call off",
+                options: ["call up", "call on", "call off", "call for"],
+                correct: "call off",
+                explanation: "'Call off' means to cancel something that was planned, like a meeting, contract, or event."
+            }
+        ];
+        
+        let score = 0;
+        let answered = 0;
+        
+        function initializeExercise() {
+            const exerciseDiv = document.getElementById('exercise');
+            exerciseDiv.innerHTML = '';
+            
+            questions.forEach(q => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.id = `question-${q.id}`;
+                
+                questionDiv.innerHTML = `
+                    <div class="question-number">Question ${q.id}</div>
+                    <div class="sentence">${q.sentence.replace(q.blank, '<span class="blank" id="blank-${q.id}">___________</span>')}</div>
+                    <div class="options" id="options-${q.id}">
+                        ${q.options.map(opt => `
+                            <div class="option" onclick="selectAnswer(${q.id}, '${opt}')">${opt}</div>
+                        `).join('')}
+                    </div>
+                    <div class="feedback" id="feedback-${q.id}"></div>
+                `;
+                
+                exerciseDiv.appendChild(questionDiv);
+            });
+            
+            document.getElementById('total').textContent = questions.length;
+            document.getElementById('total-score').textContent = questions.length;
+        }
+        
+        function selectAnswer(questionId, selectedAnswer) {
+            const question = questions.find(q => q.id === questionId);
+            const questionDiv = document.getElementById(`question-${question.id}`);
+            const feedbackDiv = document.getElementById(`feedback-${question.id}`);
+            const optionsDiv = document.getElementById(`options-${question.id}`);
+            const blankSpan = document.getElementById(`blank-${question.id}`);
+            
+            // Check if already answered
+            if (questionDiv.classList.contains('correct') || questionDiv.classList.contains('incorrect')) {
+                return;
+            }
+            
+            // Disable all options
+            const allOptions = optionsDiv.querySelectorAll('.option');
+            allOptions.forEach(opt => opt.classList.add('disabled'));
+            
+            // Update answered count
+            answered++;
+            document.getElementById('answered').textContent = answered;
+            
+            // Check if answer is correct
+            const isCorrect = selectedAnswer === question.correct;
+            
+            if (isCorrect) {
+                score++;
+                document.getElementById('score').textContent = score;
+                questionDiv.classList.add('correct');
+                feedbackDiv.className = 'feedback correct show';
+                feedbackDiv.innerHTML = `<strong>✓ Correct!</strong> ${question.explanation}`;
+                
+                // Highlight correct answer
+                allOptions.forEach(opt => {
+                    if (opt.textContent === selectedAnswer) {
+                        opt.classList.add('correct-answer');
+                    }
+                });
+            } else {
+                questionDiv.classList.add('incorrect');
+                feedbackDiv.className = 'feedback incorrect show';
+                feedbackDiv.innerHTML = `<strong>✗ Incorrect</strong> The correct answer is "<strong>${question.correct}</strong>". ${question.explanation}`;
+                
+                // Highlight wrong and correct answers
+                allOptions.forEach(opt => {
+                    if (opt.textContent === selectedAnswer) {
+                        opt.classList.add('wrong-answer');
+                    }
+                    if (opt.textContent === question.correct) {
+                        opt.classList.add('correct-answer');
+                    }
+                });
+            }
+            
+            // Fill in the blank
+            blankSpan.textContent = question.correct;
+            
+            // Check if all questions answered
+            if (answered === questions.length) {
+                setTimeout(showResults, 1000);
+            }
+        }
+        
+        function showResults() {
+            const resultsDiv = document.getElementById('results');
+            const finalScoreDiv = document.getElementById('final-score');
+            const messageDiv = document.getElementById('result-message');
+            
+            const percentage = (score / questions.length) * 100;
+            
+            finalScoreDiv.textContent = `${score}/${questions.length}`;
+            
+            if (percentage === 100) {
+                finalScoreDiv.className = 'score excellent';
+                messageDiv.textContent = 'Excellent! Perfect score! You have an excellent grasp of business phrasal verbs.';
+            } else if (percentage >= 75) {
+                finalScoreDiv.className = 'score excellent';
+                messageDiv.textContent = 'Well done! You have a strong understanding of these phrasal verbs.';
+            } else if (percentage >= 50) {
+                finalScoreDiv.className = 'score good';
+                messageDiv.textContent = 'Good effort! Review the explanations and try again to improve your score.';
+            } else {
+                finalScoreDiv.className = 'score needs-practice';
+                messageDiv.textContent = 'Keep practising! These phrasal verbs are tricky, but you\'ll get there.';
+            }
+            
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function resetExercise() {
+            score = 0;
+            answered = 0;
+            document.getElementById('score').textContent = '0';
+            document.getElementById('answered').textContent = '0';
+            document.getElementById('results').style.display = 'none';
+            initializeExercise();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Initialize on load
+        initializeExercise();
+    </script>
+</body>
+</html>
