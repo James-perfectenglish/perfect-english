@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example Materials | Perfect English</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            color: #718096;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        .intro {
+            background: #f7fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            border-left: 4px solid #667eea;
+        }
+        
+        .intro p {
+            color: #4a5568;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .resource-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+        
+        .resource-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .resource-icon {
+            font-size: 2.5rem;
+        }
+        
+        .resource-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2d3748;
+        }
+        
+        .resource-level {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .resource-level.a2 {
+            background: #48bb78;
+        }
+        
+        .resource-level.b1 {
+            background: #4299e1;
+        }
+        
+        .resource-level.c1 {
+            background: #ed8936;
+        }
+        
+        .resource-description {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .resource-features {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        
+        .resource-features li {
+            color: #718096;
+            padding: 0.3rem 0;
+            font-size: 0.95rem;
+        }
+        
+        .resource-features li::before {
+            content: "✓ ";
+            color: #48bb78;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e2e8f0;
+            color: #718096;
+        }
+        
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Example Materials</h1>
+            <p>Interactive exercises and resources for English and Spanish learners</p>
+        </div>
+        
+        <div class="intro">
+            <p>Welcome! These are free example materials that demonstrate the interactive resources available to my students. Each exercise provides instant feedback and explanations to help you learn effectively.</p>
+        </div>
+        
+        <div class="resources-grid">
+            <!-- Phrasal Verbs -->
+            <a href="/exercises/phrasal-verbs/" class="resource-card">
+                <div class="resource-header">
+                    <span class="resource-icon">💼</span>
+                    <h2 class="resource-title">Business Phrasal Verbs</h2>
+                </div>
+                <span class="resource-level c1">C1 Advanced</span>
+                <p class="resource-description">Master essential phrasal verbs used in professional business contexts. 8 questions with detailed explanations.</p>
+                <ul class="resource-features">
+                    <li>Instant feedback</li>
+                    <li>Real business examples</li>
+                    <li>Progress tracking</li>
+                </ul>
+            </a>
+            
+            <!-- Office Vocabulary -->
+            <a href="/exercises/office-vocabulary/" class="resource-card">
+                <div class="resource-header">
+                    <span class="resource-icon">🏢</span>
+                    <h2 class="resource-title">Office Vocabulary</h2>
+                </div>
+                <span class="resource-level a2">A2 Elementary</span>
+                <p class="resource-description">Learn essential office vocabulary for everyday workplace situations. Perfect for beginners in professional English.</p>
+                <ul class="resource-features">
+                    <li>10 practical questions</li>
+                    <li>Simple, clear explanations</li>
+                    <li>Common workplace terms</li>
+                </ul>
+            </a>
+            
+            <!-- Prepositions -->
+            <a href="/exercises/prepositions/" class="resource-card">
+                <div class="resource-header">
+                    <span class="resource-icon">🎯</span>
+                    <h2 class="resource-title">Prepositions Practice</h2>
+                </div>
+                <span class="resource-level b1">B1 Intermediate</span>
+                <p class="resource-description">Master tricky English prepositions with 12 focused exercises covering time, place, and fixed expressions.</p>
+                <ul class="resource-features">
+                    <li>Common preposition patterns</li>
+                    <li>Time and place usage</li>
+                    <li>Fixed expressions</li>
+                </ul>
+            </a>
+            
+            <!-- Spanish Vocabulary -->
+            <a href="/exercises/spanish-vocabulary/" class="resource-card">
+                <div class="resource-header">
+                    <span class="resource-icon">🇪🇸</span>
+                    <h2 class="resource-title">Spanish Vocabulary</h2>
+                </div>
+                <span class="resource-level a2">A2 Elementary</span>
+                <p class="resource-description">Essential Spanish vocabulary with bilingual questions. 20 everyday words and phrases with English translations.</p>
+                <ul class="resource-features">
+                    <li>Bilingual format</li>
+                    <li>Pronunciation guides</li>
+                    <li>Practical examples</li>
+                </ul>
+            </a>
+            
+            <!-- Verb Flashcards -->
+            <a href="/exercises/verbs-flashcards/" class="resource-card">
+                <div class="resource-header">
+                    <span class="resource-icon">🔄</span>
+                    <h2 class="resource-title">Spanish Verb Flashcards</h2>
+                </div>
+                <span class="resource-level a2">A2 Elementary</span>
+                <p class="resource-description">Interactive flashcards for 30 essential Spanish verbs. Click to flip between Spanish and English with pronunciation help.</p>
+                <ul class="resource-features">
+                    <li>30 essential verbs</li>
+                    <li>Bilingual with pronunciation</li>
+                    <li>Shuffle and progress tracking</li>
+                </ul>
+            </a>
+        </div>
+        
+        <div class="footer">
+            <p>Interested in personalised English or Spanish lessons? <a href="mailto:james@perfect-english.org">Contact me</a> or visit <a href="https://perfect-english.org">perfect-english.org</a></p>
+        </div>
+    </div>
+</body>
+</html>
