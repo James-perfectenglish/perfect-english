@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prepositions Exercise | Perfect English</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            color: #718096;
+            font-size: 1.1rem;
+        }
+        
+        .level-badge {
+            display: inline-block;
+            background: #4299e1;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        
+        .instructions {
+            background: #f7fafc;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #667eea;
+        }
+        
+        .instructions h2 {
+            font-size: 1.2rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+        
+        .instructions p {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+        
+        .exercise {
+            margin-bottom: 2rem;
+        }
+        
+        .question {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .question.correct {
+            border-color: #48bb78;
+            background: #f0fff4;
+        }
+        
+        .question.incorrect {
+            border-color: #f56565;
+            background: #fff5f5;
+        }
+        
+        .question-number {
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .sentence {
+            font-size: 1.2rem;
+            color: #2d3748;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .blank {
+            display: inline-block;
+            min-width: 80px;
+            border-bottom: 2px solid #cbd5e0;
+            padding: 0 0.5rem;
+            font-weight: 600;
+            color: #667eea;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+        
+        .option {
+            padding: 1rem;
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            font-weight: 500;
+            color: #2d3748;
+        }
+        
+        .option:hover {
+            border-color: #667eea;
+            background: #edf2f7;
+            transform: translateY(-2px);
+        }
+        
+        .option.selected {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .option.correct-answer {
+            background: #48bb78;
+            color: white;
+            border-color: #48bb78;
+        }
+        
+        .option.wrong-answer {
+            background: #f56565;
+            color: white;
+            border-color: #f56565;
+        }
+        
+        .option.disabled {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+        
+        .feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            display: none;
+        }
+        
+        .feedback.show {
+            display: block;
+        }
+        
+        .feedback.correct {
+            background: #c6f6d5;
+            color: #22543d;
+            border-left: 4px solid #48bb78;
+        }
+        
+        .feedback.incorrect {
+            background: #fed7d7;
+            color: #742a2a;
+            border-left: 4px solid #f56565;
+        }
+        
+        .feedback strong {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .results {
+            background: #f7fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 2rem;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .results h2 {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+        
+        .score {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #667eea;
+            margin: 1rem 0;
+        }
+        
+        .score.excellent {
+            color: #48bb78;
+        }
+        
+        .score.good {
+            color: #4299e1;
+        }
+        
+        .score.needs-practice {
+            color: #ed8936;
+        }
+        
+        .reset-btn {
+            margin-top: 1.5rem;
+            padding: 1rem 2rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .reset-btn:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .progress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: #f7fafc;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .progress-text {
+            color: #4a5568;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Prepositions Practice</h1>
+            <p>Choose the correct preposition for each sentence</p>
+            <span class="level-badge">Level: B1 Intermediate</span>
+        </div>
+        
+        <div class="instructions">
+            <h2>Instructions</h2>
+            <p>Read each sentence carefully and select the preposition that best completes it. Pay attention to the context - prepositions can change meaning!</p>
+        </div>
+        
+        <div class="progress">
+            <span class="progress-text">Progress: <span id="answered">0</span>/<span id="total">12</span></span>
+            <span class="progress-text">Score: <span id="score">0</span>/<span id="total-score">12</span></span>
+        </div>
+        
+        <div class="exercise" id="exercise">
+            <!-- Questions will be inserted here by JavaScript -->
+        </div>
+        
+        <div class="results" id="results" style="display: none;">
+            <h2>Exercise Complete!</h2>
+            <div class="score" id="final-score">0/12</div>
+            <p id="result-message"></p>
+            <button class="reset-btn" onclick="resetExercise()">Try Again</button>
+        </div>
+    </div>
+    
+    <script>
+        const questions = [
+            {
+                id: 1,
+                sentence: "The meeting starts ___________ 9 o'clock.",
+                blank: "at",
+                options: ["at", "on", "in", "by"],
+                correct: "at",
+                explanation: "We use 'at' with specific times (at 9 o'clock, at midnight, at noon)."
+            },
+            {
+                id: 2,
+                sentence: "I was born ___________ 1995.",
+                blank: "in",
+                options: ["at", "on", "in", "by"],
+                correct: "in",
+                explanation: "We use 'in' with years, months, and longer periods of time (in 1995, in July, in the morning)."
+            },
+            {
+                id: 3,
+                sentence: "My birthday is ___________ the 15th of March.",
+                blank: "on",
+                options: ["at", "on", "in", "by"],
+                correct: "on",
+                explanation: "We use 'on' with specific dates and days (on Monday, on the 15th of March, on Christmas Day)."
+            },
+            {
+                id: 4,
+                sentence: "She's very good ___________ playing the piano.",
+                blank: "at",
+                options: ["at", "on", "in", "for"],
+                correct: "at",
+                explanation: "We use 'good at' when talking about skills and abilities. It's a fixed expression."
+            },
+            {
+                id: 5,
+                sentence: "I'm looking forward ___________ seeing you again.",
+                blank: "to",
+                options: ["to", "for", "at", "with"],
+                correct: "to",
+                explanation: "'Look forward to' is a fixed expression. Remember: 'to' is followed by -ing in this case (to seeing, not to see)."
+            },
+            {
+                id: 6,
+                sentence: "The book is ___________ the table.",
+                blank: "on",
+                options: ["on", "in", "at", "over"],
+                correct: "on",
+                explanation: "We use 'on' when something is touching the surface of something (on the table, on the wall, on the floor)."
+            },
+            {
+                id: 7,
+                sentence: "We travelled ___________ train from London to Edinburgh.",
+                blank: "by",
+                options: ["by", "with", "in", "on"],
+                correct: "by",
+                explanation: "We use 'by' with most forms of transport (by train, by car, by plane). Exception: on foot!"
+            },
+            {
+                id: 8,
+                sentence: "I'm interested PREP learning Spanish.",
+                blank: "PREP",
+                options: ["in", "on", "at", "for"],
+                correct: "in",
+                explanation: "'Interested in' is a fixed expression. We use 'in' after 'interested' to talk about topics or activities."
+            },
+            {
+                id: 9,
+                sentence: "She lives ___________ London.",
+                blank: "in",
+                options: ["in", "at", "on", "by"],
+                correct: "in",
+                explanation: "We use 'in' with cities, countries, and enclosed spaces (in London, in Spain, in a room)."
+            },
+            {
+                id: 10,
+                sentence: "The report must be finished ___________ Friday.",
+                blank: "by",
+                options: ["by", "until", "at", "in"],
+                correct: "by",
+                explanation: "We use 'by' to mean 'not later than' or 'before' a specific time or date (by Friday = before Friday ends)."
+            },
+            {
+                id: 11,
+                sentence: "I've been waiting ___________ twenty minutes!",
+                blank: "for",
+                options: ["for", "since", "during", "while"],
+                correct: "for",
+                explanation: "We use 'for' with a period of time (for 20 minutes, for 3 hours, for 5 years)."
+            },
+            {
+                id: 12,
+                sentence: "I've lived here ___________ 2020.",
+                blank: "since",
+                options: ["for", "since", "from", "by"],
+                correct: "since",
+                explanation: "We use 'since' with a specific point in time when something started (since 2020, since Monday, since January)."
+            }
+        ];
+        
+        let score = 0;
+        let answered = 0;
+        
+        function initializeExercise() {
+            const exerciseDiv = document.getElementById('exercise');
+            exerciseDiv.innerHTML = '';
+            
+            questions.forEach(q => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.id = `question-${q.id}`;
+                
+                questionDiv.innerHTML = `
+                    <div class="question-number">Question ${q.id}</div>
+                    <div class="sentence">${q.sentence.replace(q.blank, '<span class="blank" id="blank-${q.id}">___________</span>')}</div>
+                    <div class="options" id="options-${q.id}">
+                        ${q.options.map(opt => `
+                            <div class="option" onclick="selectAnswer(${q.id}, '${opt}')">${opt}</div>
+                        `).join('')}
+                    </div>
+                    <div class="feedback" id="feedback-${q.id}"></div>
+                `;
+                
+                exerciseDiv.appendChild(questionDiv);
+            });
+            
+            document.getElementById('total').textContent = questions.length;
+            document.getElementById('total-score').textContent = questions.length;
+        }
+        
+        function selectAnswer(questionId, selectedAnswer) {
+            const question = questions.find(q => q.id === questionId);
+            const questionDiv = document.getElementById(`question-${question.id}`);
+            const feedbackDiv = document.getElementById(`feedback-${question.id}`);
+            const optionsDiv = document.getElementById(`options-${question.id}`);
+            const blankSpan = document.getElementById(`blank-${question.id}`);
+            
+            // Check if already answered
+            if (questionDiv.classList.contains('correct') || questionDiv.classList.contains('incorrect')) {
+                return;
+            }
+            
+            // Disable all options
+            const allOptions = optionsDiv.querySelectorAll('.option');
+            allOptions.forEach(opt => opt.classList.add('disabled'));
+            
+            // Update answered count
+            answered++;
+            document.getElementById('answered').textContent = answered;
+            
+            // Check if answer is correct
+            const isCorrect = selectedAnswer === question.correct;
+            
+            if (isCorrect) {
+                score++;
+                document.getElementById('score').textContent = score;
+                questionDiv.classList.add('correct');
+                feedbackDiv.className = 'feedback correct show';
+                feedbackDiv.innerHTML = `<strong>✓ Correct!</strong> ${question.explanation}`;
+                
+                // Highlight correct answer
+                allOptions.forEach(opt => {
+                    if (opt.textContent === selectedAnswer) {
+                        opt.classList.add('correct-answer');
+                    }
+                });
+            } else {
+                questionDiv.classList.add('incorrect');
+                feedbackDiv.className = 'feedback incorrect show';
+                feedbackDiv.innerHTML = `<strong>✗ Incorrect</strong> The correct answer is "<strong>${question.correct}</strong>". ${question.explanation}`;
+                
+                // Highlight wrong and correct answers
+                allOptions.forEach(opt => {
+                    if (opt.textContent === selectedAnswer) {
+                        opt.classList.add('wrong-answer');
+                    }
+                    if (opt.textContent === question.correct) {
+                        opt.classList.add('correct-answer');
+                    }
+                });
+            }
+            
+            // Fill in the blank
+            blankSpan.textContent = question.correct;
+            
+            // Check if all questions answered
+            if (answered === questions.length) {
+                setTimeout(showResults, 1000);
+            }
+        }
+        
+        function showResults() {
+            const resultsDiv = document.getElementById('results');
+            const finalScoreDiv = document.getElementById('final-score');
+            const messageDiv = document.getElementById('result-message');
+            
+            const percentage = (score / questions.length) * 100;
+            
+            finalScoreDiv.textContent = `${score}/${questions.length}`;
+            
+            if (percentage === 100) {
+                finalScoreDiv.className = 'score excellent';
+                messageDiv.textContent = 'Perfect! You have an excellent understanding of English prepositions!';
+            } else if (percentage >= 75) {
+                finalScoreDiv.className = 'score excellent';
+                messageDiv.textContent = 'Well done! You have a strong grasp of preposition usage.';
+            } else if (percentage >= 60) {
+                finalScoreDiv.className = 'score good';
+                messageDiv.textContent = 'Good work! Keep practising these prepositions and review the explanations.';
+            } else {
+                finalScoreDiv.className = 'score needs-practice';
+                messageDiv.textContent = 'Prepositions are tricky! Review the explanations and try again.';
+            }
+            
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function resetExercise() {
+            score = 0;
+            answered = 0;
+            document.getElementById('score').textContent = '0';
+            document.getElementById('answered').textContent = '0';
+            document.getElementById('results').style.display = 'none';
+            initializeExercise();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Initialize on load
+        initializeExercise();
+    </script>
+</body>
+</html>
