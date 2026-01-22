@@ -393,19 +393,88 @@
                 grid-template-columns: 1fr;
             }
         }
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .logo .perfect {
+            color: #2C3E50;
+        }
+
+        .logo .english {
+            color: #3498DB;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav a {
+            text-decoration: none;
+            color: #2C3E50;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #3498DB;
+        }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="container">
-            <div class="logo">Perfect <span>English</span></div>
-            <ul>
-                <li><a href="#resources">Resources</a></li>
-                <li><a href="/examples/">Examples</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo">
+                <h1>
+                    <span class="perfect">Perfect</span>
+                    <span class="english">English</span>
+                </h1>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/examples">Examples</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-    </nav>
+    </header>
+   
     
     <div class="hero" id="home">
         <div class="hero-content">
