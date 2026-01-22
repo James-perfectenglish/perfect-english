@@ -464,6 +464,20 @@
         header .header-container {
             border: none;
         }
+        /* Make navigation smaller on mobile only */
+        @media (max-width: 768px) {
+            header nav ul {
+                gap: 1rem;
+            }
+            
+            header nav a {
+                font-size: 0.85rem;
+            }
+            
+            .header-container {
+                padding: 0.75rem 1rem;
+            }
+        }
     </style>
 </head>
 <body>
