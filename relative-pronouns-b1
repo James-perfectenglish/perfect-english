@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relative Pronouns Practice - Perfect English</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            background: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .logo .english {
+            color: #667eea;
+        }
+
+        nav a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .level-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 8px 20px;
+            margin: 20px auto;
+            display: block;
+            width: fit-content;
+            font-weight: bold;
+        }
+
+        .instructions {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 30px 0;
+        }
+
+        .instructions h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .progress-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .question-card {
+            background: #f8f9fa;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .question-number {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .question-text {
+            font-size: 1.2em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .blank {
+            display: inline-block;
+            min-width: 120px;
+            border-bottom: 2px solid #2c3e50;
+            margin: 0 5px;
+        }
+
+        .options {
+            display: grid;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .option {
+            background: white;
+            border: 2px solid #ddd;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.1em;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            background: #f0f0ff;
+        }
+
+        .option.selected {
+            border-color: #667eea;
+            background: #e8eaff;
+        }
+
+        .option.correct {
+            border-color: #27ae60;
+            background: #d4edda;
+        }
+
+        .option.incorrect {
+            border-color: #e74c3c;
+            background: #f8d7da;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            display: none;
+            line-height: 1.6;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            border-left: 4px solid #27ae60;
+            color: #155724;
+        }
+
+        .feedback.incorrect {
+            background: #f8d7da;
+            border-left: 4px solid #e74c3c;
+            color: #721c24;
+        }
+
+        .next-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            display: none;
+            transition: background 0.3s;
+        }
+
+        .next-button:hover {
+            background: #5568d3;
+        }
+
+        .next-button.show {
+            display: block;
+        }
+
+        .final-score {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+
+        .final-score.show {
+            display: block;
+        }
+
+        .final-score h2 {
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .score-display {
+            font-size: 3em;
+            color: #667eea;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .restart-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .restart-button:hover {
+            background: #5568d3;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav {
+                margin-top: 15px;
+            }
+
+            nav a {
+                margin: 0 10px;
+            }
+
+            .question-text {
+                font-size: 1.1em;
+            }
+
+            .option {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">Perfect<span class="english">English</span></div>
+            <nav>
+                <a href="index.html">Resources</a>
+                <a href="examples.html">Examples</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Relative Pronouns Practice</h1>
+        <p class="subtitle">Choose the correct relative pronoun for each sentence</p>
+        <div class="level-badge">Level: B1 Intermediate</div>
+
+        <div class="instructions">
+            <h3>Instructions</h3>
+            <p>Read each sentence carefully and select the relative pronoun that best completes it. Relative pronouns (who, which, that, whose, where, when) connect clauses and provide additional information about nouns. Pay attention to whether you're referring to people, things, possession, places, or time!</p>
+        </div>
+
+        <div class="progress-container">
+            <div>Progress: <span id="current-question">0</span>/10</div>
+            <div>Score: <span id="score">0</span>/10</div>
+        </div>
+
+        <div id="quiz-container"></div>
+
+        <div class="final-score" id="final-score">
+            <h2>Quiz Complete!</h2>
+            <div class="score-display"><span id="final-score-value">0</span>/10</div>
+            <p id="final-message"></p>
+            <button class="restart-button" onclick="restartQuiz()">Try Again</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "The woman <span class='blank'></span> lives next door is a doctor.",
+                options: ["who", "which", "whose", "where"],
+                correct: 0,
+                feedback: {
+                    correct: "Correct! 'Who' is used for people when they are the subject of the relative clause. The woman is a person and she lives next door.",
+                    incorrect: "Not quite. We use 'who' for people when they are the subject of the relative clause. 'Which' is for things, 'whose' shows possession, and 'where' is for places."
+                }
+            },
+            {
+                question: "This is the book <span class='blank'></span> I told you about yesterday.",
+                options: ["who", "which", "where", "whose"],
+                correct: 1,
+                feedback: {
+                    correct: "Correct! 'Which' is used for things and animals. The book is an object, so we use 'which' or 'that' (both are acceptable here).",
+                    incorrect: "Not quite. We use 'which' or 'that' for things and animals. 'Who' is for people, 'where' is for places, and 'whose' shows possession."
+                }
+            },
+            {
+                question: "The restaurant <span class='blank'></span> we had dinner last night was excellent.",
+                options: ["which", "who", "where", "whose"],
+                correct: 2,
+                feedback: {
+                    correct: "Excellent! 'Where' is used for places. The restaurant is a place where the action (having dinner) happened.",
+                    incorrect: "Not quite. We use 'where' when referring to a place where something happens. The restaurant is a location, so 'where' is the correct choice."
+                }
+            },
+            {
+                question: "The man <span class='blank'></span> car was stolen reported it to the police.",
+                options: ["who", "which", "whose", "that"],
+                correct: 2,
+                feedback: {
+                    correct: "Perfect! 'Whose' shows possession. The car belongs to the man, so we use 'whose' to show this relationship.",
+                    incorrect: "Not quite. We use 'whose' to show possession or relationship. The car belongs to the man, so we need 'whose' to connect these ideas."
+                }
+            },
+            {
+                question: "Do you remember the day <span class='blank'></span> we first met?",
+                options: ["where", "which", "when", "who"],
+                correct: 2,
+                feedback: {
+                    correct: "Correct! 'When' is used for times and specific time periods. We're referring to the day as a point in time.",
+                    incorrect: "Not quite. We use 'when' to refer to a time or specific period. The day represents a point in time, so 'when' is correct."
+                }
+            },
+            {
+                question: "The students <span class='blank'></span> passed the exam celebrated together.",
+                options: ["which", "who", "whose", "where"],
+                correct: 1,
+                feedback: {
+                    correct: "Excellent! 'Who' is used for people. The students are people who performed the action of passing the exam.",
+                    incorrect: "Not quite. We use 'who' or 'that' for people when they are the subject. Students are people, so 'who' is the natural choice."
+                }
+            },
+            {
+                question: "This is the computer <span class='blank'></span> I use for work.",
+                options: ["who", "which", "where", "whose"],
+                correct: 1,
+                feedback: {
+                    correct: "Correct! 'Which' or 'that' can be used for things. A computer is an object, not a person.",
+                    incorrect: "Not quite. We use 'which' or 'that' for objects and things. 'Who' is for people, 'where' is for places, and 'whose' shows possession."
+                }
+            },
+            {
+                question: "The hotel <span class='blank'></span> we stayed was near the beach.",
+                options: ["which", "where", "who", "when"],
+                correct: 1,
+                feedback: {
+                    correct: "Perfect! 'Where' is used for places. The hotel is a location where the staying occurred.",
+                    incorrect: "Not quite. We use 'where' for places. The hotel is a location, and we're describing where we stayed."
+                }
+            },
+            {
+                question: "She's the teacher <span class='blank'></span> helped me learn English.",
+                options: ["which", "whose", "who", "where"],
+                correct: 2,
+                feedback: {
+                    correct: "Excellent! 'Who' is correct for people. The teacher is a person who performed the action of helping.",
+                    incorrect: "Not quite. We use 'who' for people when they are performing an action. The teacher is a person, so 'who' is correct."
+                }
+            },
+            {
+                question: "The year <span class='blank'></span> I graduated was unforgettable.",
+                options: ["which", "where", "when", "whose"],
+                correct: 2,
+                feedback: {
+                    correct: "Correct! 'When' is used for time references. The year represents a specific time period.",
+                    incorrect: "Not quite. We use 'when' for time references. The year is a time period, so 'when' is the appropriate relative pronoun."
+                }
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        function displayQuestion() {
+            const container = document.getElementById('quiz-container');
+            const q = questions[currentQuestion];
+            
+            container.innerHTML = `
+                <div class="question-card">
+                    <div class="question-number">Question ${currentQuestion + 1}</div>
+                    <div class="question-text">${q.question}</div>
+                    <div class="options">
+                        ${q.options.map((option, index) => `
+                            <div class="option" onclick="selectAnswer(${index})">${option}</div>
+                        `).join('')}
+                    </div>
+                    <div class="feedback" id="feedback"></div>
+                    <button class="next-button" id="next-button" onclick="nextQuestion()">
+                        ${currentQuestion < questions.length - 1 ? 'Next Question' : 'Finish Quiz'}
+                    </button>
+                </div>
+            `;
+            
+            document.getElementById('current-question').textContent = currentQuestion;
+            answered = false;
+        }
+
+        function selectAnswer(selectedIndex) {
+            if (answered) return;
+            
+            answered = true;
+            const q = questions[currentQuestion];
+            const options = document.querySelectorAll('.option');
+            const feedback = document.getElementById('feedback');
+            const nextButton = document.getElementById('next-button');
+            
+            options[selectedIndex].classList.add('selected');
+            
+            if (selectedIndex === q.correct) {
+                options[selectedIndex].classList.add('correct');
+                feedback.className = 'feedback correct show';
+                feedback.textContent = '✓ ' + q.feedback.correct;
+                score++;
+                document.getElementById('score').textContent = score;
+            } else {
+                options[selectedIndex].classList.add('incorrect');
+                options[q.correct].classList.add('correct');
+                feedback.className = 'feedback incorrect show';
+                feedback.textContent = '✗ ' + q.feedback.incorrect;
+            }
+            
+            options.forEach(option => option.style.cursor = 'default');
+            nextButton.classList.add('show');
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            
+            if (currentQuestion < questions.length) {
+                displayQuestion();
+            } else {
+                showFinalScore();
+            }
+        }
+
+        function showFinalScore() {
+            document.getElementById('quiz-container').style.display = 'none';
+            const finalScoreDiv = document.getElementById('final-score');
+            const finalScoreValue = document.getElementById('final-score-value');
+            const finalMessage = document.getElementById('final-message');
+            
+            finalScoreValue.textContent = score;
+            
+            let message = '';
+            const percentage = (score / questions.length) * 100;
+            
+            if (percentage === 100) {
+                message = 'Perfect! You have an excellent understanding of relative pronouns!';
+            } else if (percentage >= 80) {
+                message = 'Great job! You have a strong grasp of relative pronouns.';
+            } else if (percentage >= 60) {
+                message = 'Good effort! Review the feedback to strengthen your understanding.';
+            } else {
+                message = 'Keep practicing! Review the rules for who, which, that, whose, where, and when.';
+            }
+            
+            finalMessage.textContent = message;
+            finalScoreDiv.classList.add('show');
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            answered = false;
+            document.getElementById('score').textContent = '0';
+            document.getElementById('quiz-container').style.display = 'block';
+            document.getElementById('final-score').classList.remove('show');
+            displayQuestion();
+        }
+
+        // Start the quiz
+        displayQuestion();
+    </script>
+</body>
+</html>
