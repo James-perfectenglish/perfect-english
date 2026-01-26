@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spanish to English Translation - Perfect English</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            background: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .logo .english {
+            color: #667eea;
+        }
+
+        nav a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .level-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 8px 20px;
+            margin: 20px auto;
+            display: block;
+            width: fit-content;
+            font-weight: bold;
+        }
+
+        .instructions {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 30px 0;
+        }
+
+        .instructions h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .progress-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .question-card {
+            background: #f8f9fa;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .question-number {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .spanish-sentence {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 500;
+            padding: 20px;
+            background: white;
+            border-left: 4px solid #667eea;
+        }
+
+        .answer-area {
+            min-height: 80px;
+            background: white;
+            border: 3px dashed #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: flex-start;
+        }
+
+        .answer-area.has-words {
+            border-color: #667eea;
+        }
+
+        .word-bank {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+            min-height: 60px;
+        }
+
+        .word-tile {
+            background: #667eea;
+            color: white;
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1.1em;
+            border: 2px solid transparent;
+            user-select: none;
+        }
+
+        .word-tile:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .word-tile.in-answer {
+            background: #34495e;
+        }
+
+        .word-tile.in-answer:hover {
+            background: #2c3e50;
+        }
+
+        .check-button {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+            margin-bottom: 10px;
+        }
+
+        .check-button:hover {
+            background: #229954;
+        }
+
+        .check-button:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        .next-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            cursor: pointer;
+            width: 100%;
+            display: none;
+            transition: background 0.3s;
+        }
+
+        .next-button:hover {
+            background: #5568d3;
+        }
+
+        .next-button.show {
+            display: block;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 20px;
+            display: none;
+            line-height: 1.6;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            border-left: 4px solid #27ae60;
+            color: #155724;
+        }
+
+        .feedback.incorrect {
+            background: #f8d7da;
+            border-left: 4px solid #e74c3c;
+            color: #721c24;
+        }
+
+        .correct-answer {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .final-score {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+
+        .final-score.show {
+            display: block;
+        }
+
+        .final-score h2 {
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .score-display {
+            font-size: 3em;
+            color: #667eea;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .restart-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .restart-button:hover {
+            background: #5568d3;
+        }
+
+        .empty-message {
+            color: #95a5a6;
+            font-style: italic;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav {
+                margin-top: 15px;
+            }
+
+            nav a {
+                margin: 0 10px;
+            }
+
+            .spanish-sentence {
+                font-size: 1.2em;
+            }
+
+            .word-tile {
+                font-size: 1em;
+                padding: 10px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">Perfect<span class="english">English</span></div>
+            <nav>
+                <a href="index.html">Resources</a>
+                <a href="examples.html">Examples</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Spanish to English Translation</h1>
+        <p class="subtitle">Build the correct English sentence from the words provided</p>
+        <div class="level-badge">Level: B2 Upper Intermediate - Business Context</div>
+
+        <div class="instructions">
+            <h3>Instructions</h3>
+            <p>Read the Spanish sentence and translate it into English by clicking the words in the correct order. Some extra words are included that you don't need - choose carefully! Click on words in your answer to remove them if you make a mistake.</p>
+        </div>
+
+        <div class="progress-container">
+            <div>Progress: <span id="current-question">0</span>/10</div>
+            <div>Score: <span id="score">0</span>/10</div>
+        </div>
+
+        <div id="quiz-container"></div>
+
+        <div class="final-score" id="final-score">
+            <h2>Quiz Complete!</h2>
+            <div class="score-display"><span id="final-score-value">0</span>/10</div>
+            <p id="final-message"></p>
+            <button class="restart-button" onclick="restartQuiz()">Try Again</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                spanish: "Necesitamos aumentar nuestras ventas este trimestre fiscal.",
+                correctAnswer: "We need to increase our sales this quarter",
+                words: ["We", "need", "to", "increase", "our", "sales", "this", "quarter", "want", "raise", "month"],
+                feedback: {
+                    correct: "Excellent! 'Aumentar' means 'to increase' in a business context. 'Trimestre fiscal' translates to 'quarter' (a three-month business period), not 'month'.",
+                    incorrect: "Not quite. Remember: 'aumentar' = 'increase' (not 'raise'), and 'trimestre' = 'quarter' (not 'month'). The correct translation is: 'We need to increase our sales this quarter'."
+                }
+            },
+            {
+                spanish: "El gerente programará una reunión con el equipo mañana.",
+                correctAnswer: "The manager will schedule a meeting with the team tomorrow",
+                words: ["The", "manager", "will", "schedule", "a", "meeting", "with", "the", "team", "tomorrow", "arrange", "yesterday", "director"],
+                feedback: {
+                    correct: "Perfect! 'Programar' means 'to schedule' in business English. Note the future tense 'programará' = 'will schedule', and 'equipo' = 'team'.",
+                    incorrect: "Not quite. 'Programar' means 'to schedule' (not 'arrange'), and 'gerente' is 'manager' (not 'director' in this context). The correct answer is: 'The manager will schedule a meeting with the team tomorrow'."
+                }
+            },
+            {
+                spanish: "Debemos revisar el presupuesto antes de la presentación.",
+                correctAnswer: "We must review the budget before the presentation",
+                words: ["We", "must", "review", "the", "budget", "before", "the", "presentation", "should", "check", "after", "report"],
+                feedback: {
+                    correct: "Great! 'Deber' in this context means 'must' (strong obligation). 'Revisar' = 'review', and 'presupuesto' = 'budget'.",
+                    incorrect: "Not quite. 'Debemos' means 'we must' (stronger than 'should'), and 'revisar' means 'review' (more formal than 'check'). The correct answer is: 'We must review the budget before the presentation'."
+                }
+            },
+            {
+                spanish: "Los clientes esperan recibir una respuesta rápida siempre.",
+                correctAnswer: "Clients expect to receive a quick response always",
+                words: ["Clients", "expect", "to", "receive", "a", "quick", "response", "always", "Customers", "want", "fast", "answer"],
+                feedback: {
+                    correct: "Excellent! In business contexts, 'clientes' is typically 'clients'. 'Esperar' = 'expect', 'recibir' = 'receive', and 'rápida' = 'quick'.",
+                    incorrect: "Not quite. While 'customers' can work, 'clients' is more formal. 'Esperar' means 'expect' (not just 'want'), and the structure is 'expect to receive'. The correct answer is: 'Clients expect to receive a quick response always'."
+                }
+            },
+            {
+                spanish: "Vamos a implementar nuevas estrategias de marketing este año.",
+                correctAnswer: "We are going to implement new marketing strategies this year",
+                words: ["We", "are", "going", "to", "implement", "new", "marketing", "strategies", "this", "year", "will", "create", "plans"],
+                feedback: {
+                    correct: "Perfect! 'Vamos a' translates to 'we are going to' (near future). 'Implementar' = 'implement', and 'estrategias' = 'strategies'.",
+                    incorrect: "Not quite. 'Vamos a' means 'we are going to' (not 'we will'), and 'implementar' means 'implement' (not 'create'). The correct answer is: 'We are going to implement new marketing strategies this year'."
+                }
+            },
+            {
+                spanish: "El contrato debe ser firmado por ambas partes hoy.",
+                correctAnswer: "The contract must be signed by both parties today",
+                words: ["The", "contract", "must", "be", "signed", "by", "both", "parties", "today", "should", "agreement", "sides", "now"],
+                feedback: {
+                    correct: "Excellent! This uses the passive voice: 'debe ser firmado' = 'must be signed'. 'Ambas partes' means 'both parties' in legal/business contexts.",
+                    incorrect: "Not quite. 'Debe ser' means 'must be' (obligation), and 'partes' means 'parties' (legal term, not 'sides'). The correct answer is: 'The contract must be signed by both parties today'."
+                }
+            },
+            {
+                spanish: "Tenemos que cumplir con los plazos establecidos siempre.",
+                correctAnswer: "We have to meet the deadlines established always",
+                words: ["We", "have", "to", "meet", "the", "deadlines", "established", "always", "must", "follow", "dates", "set"],
+                feedback: {
+                    correct: "Great! 'Cumplir con los plazos' means 'meet the deadlines' in business English. 'Establecidos' = 'established' (set beforehand).",
+                    incorrect: "Not quite. 'Cumplir con los plazos' means 'meet the deadlines' (not 'follow the dates'), and 'tenemos que' = 'we have to'. The correct answer is: 'We have to meet the deadlines established always'."
+                }
+            },
+            {
+                spanish: "La empresa está buscando candidatos calificados para la vacante.",
+                correctAnswer: "The company is looking for qualified candidates for the position",
+                words: ["The", "company", "is", "looking", "for", "qualified", "candidates", "for", "the", "position", "searching", "skilled", "vacancy", "job"],
+                feedback: {
+                    correct: "Perfect! 'Buscar' = 'looking for', 'calificados' = 'qualified', and 'vacante' translates to 'position' in professional contexts.",
+                    incorrect: "Not quite. While 'searching' works, 'looking for' is more natural. 'Vacante' means 'position' (more professional than 'job'). The correct answer is: 'The company is looking for qualified candidates for the position'."
+                }
+            },
+            {
+                spanish: "Debemos analizar los datos antes de tomar una decisión.",
+                correctAnswer: "We must analyze the data before making a decision",
+                words: ["We", "must", "analyze", "the", "data", "before", "making", "a", "decision", "should", "examine", "taking", "information"],
+                feedback: {
+                    correct: "Excellent! 'Analizar' = 'analyze', and 'tomar una decisión' = 'making a decision' (note: 'making', not 'taking').",
+                    incorrect: "Not quite. 'Debemos' = 'we must' (stronger than 'should'), and in English we say 'making a decision' (not 'taking'). The correct answer is: 'We must analyze the data before making a decision'."
+                }
+            },
+            {
+                spanish: "El departamento financiero preparará el informe anual próximamente.",
+                correctAnswer: "The finance department will prepare the annual report soon",
+                words: ["The", "finance", "department", "will", "prepare", "the", "annual", "report", "soon", "financial", "make", "yearly", "quickly"],
+                feedback: {
+                    correct: "Perfect! 'Departamento financiero' = 'finance department', 'preparará' = 'will prepare' (future tense), and 'próximamente' = 'soon'.",
+                    incorrect: "Not quite. 'Financiero' becomes 'finance' (adjective), 'preparar' = 'prepare' (not 'make'), and 'anual' = 'annual' (not 'yearly'). The correct answer is: 'The finance department will prepare the annual report soon'."
+                }
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+        let userAnswer = [];
+
+        function shuffleArray(array) {
+            const newArray = [...array];
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
+        }
+
+        function displayQuestion() {
+            const container = document.getElementById('quiz-container');
+            const q = questions[currentQuestion];
+            userAnswer = [];
+            
+            const shuffledWords = shuffleArray(q.words);
+            
+            container.innerHTML = `
+                <div class="question-card">
+                    <div class="question-number">Question ${currentQuestion + 1}</div>
+                    <div class="spanish-sentence">${q.spanish}</div>
+                    
+                    <div class="answer-area" id="answer-area" onclick="handleAnswerAreaClick(event)">
+                        <span class="empty-message" id="empty-message">Click words below to build your answer</span>
+                    </div>
+                    
+                    <div class="word-bank" id="word-bank">
+                        ${shuffledWords.map((word, index) => `
+                            <div class="word-tile" data-word="${word}" data-index="${index}" onclick="addWord('${word}', ${index})">${word}</div>
+                        `).join('')}
+                    </div>
+                    
+                    <button class="check-button" id="check-button" onclick="checkAnswer()" disabled>CHECK</button>
+                    <div class="feedback" id="feedback"></div>
+                    <button class="next-button" id="next-button" onclick="nextQuestion()">
+                        ${currentQuestion < questions.length - 1 ? 'Next Question' : 'Finish Quiz'}
+                    </button>
+                </div>
+            `;
+            
+            document.getElementById('current-question').textContent = currentQuestion + 1;
+            answered = false;
+        }
+
+        function addWord(word, index) {
+            if (answered) return;
+            
+            const wordTile = document.querySelector(`[data-index="${index}"]`);
+            if (wordTile.classList.contains('in-answer')) return;
+            
+            userAnswer.push({word: word, index: index});
+            wordTile.classList.add('in-answer');
+            
+            updateAnswerArea();
+            updateCheckButton();
+        }
+
+        function removeWord(index) {
+            if (answered) return;
+            
+            const wordData = userAnswer[index];
+            userAnswer.splice(index, 1);
+            
+            const wordTile = document.querySelector(`[data-index="${wordData.index}"]`);
+            wordTile.classList.remove('in-answer');
+            
+            updateAnswerArea();
+            updateCheckButton();
+        }
+
+        function updateAnswerArea() {
+            const answerArea = document.getElementById('answer-area');
+            const emptyMessage = document.getElementById('empty-message');
+            
+            if (userAnswer.length === 0) {
+                if (emptyMessage) emptyMessage.style.display = 'block';
+                answerArea.classList.remove('has-words');
+            } else {
+                if (emptyMessage) emptyMessage.style.display = 'none';
+                answerArea.classList.add('has-words');
+            }
+            
+            const answerHTML = userAnswer.map((item, idx) => 
+                `<div class="word-tile in-answer" onclick="removeWord(${idx})">${item.word}</div>`
+            ).join('');
+            
+            answerArea.innerHTML = userAnswer.length === 0 ? 
+                '<span class="empty-message" id="empty-message">Click words below to build your answer</span>' : 
+                answerHTML;
+        }
+
+        function handleAnswerAreaClick(event) {
+            // This is handled by individual word tiles
+        }
+
+        function updateCheckButton() {
+            const checkButton = document.getElementById('check-button');
+            checkButton.disabled = userAnswer.length === 0;
+        }
+
+        function checkAnswer() {
+            if (answered || userAnswer.length === 0) return;
+            
+            answered = true;
+            const q = questions[currentQuestion];
+            const userAnswerText = userAnswer.map(item => item.word).join(' ');
+            const correctAnswerText = q.correctAnswer;
+            
+            const feedback = document.getElementById('feedback');
+            const nextButton = document.getElementById('next-button');
+            const checkButton = document.getElementById('check-button');
+            
+            checkButton.style.display = 'none';
+            
+            // Disable all word tiles
+            document.querySelectorAll('.word-tile').forEach(tile => {
+                tile.style.cursor = 'default';
+                tile.onclick = null;
+            });
+            
+            if (userAnswerText.toLowerCase() === correctAnswerText.toLowerCase()) {
+                feedback.className = 'feedback correct show';
+                feedback.innerHTML = '✓ ' + q.feedback.correct;
+                score++;
+                document.getElementById('score').textContent = score;
+            } else {
+                feedback.className = 'feedback incorrect show';
+                feedback.innerHTML = '✗ ' + q.feedback.incorrect + 
+                    '<div class="correct-answer">Correct answer: ' + correctAnswerText + '</div>';
+            }
+            
+            nextButton.classList.add('show');
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            
+            if (currentQuestion < questions.length) {
+                displayQuestion();
+            } else {
+                showFinalScore();
+            }
+        }
+
+        function showFinalScore() {
+            document.getElementById('quiz-container').style.display = 'none';
+            const finalScoreDiv = document.getElementById('final-score');
+            const finalScoreValue = document.getElementById('final-score-value');
+            const finalMessage = document.getElementById('final-message');
+            
+            finalScoreValue.textContent = score;
+            
+            let message = '';
+            const percentage = (score / questions.length) * 100;
+            
+            if (percentage === 100) {
+                message = 'Outstanding! Your Spanish to English business translation skills are excellent!';
+            } else if (percentage >= 80) {
+                message = 'Great work! You have strong translation skills in business contexts.';
+            } else if (percentage >= 60) {
+                message = 'Good effort! Review the feedback to improve your business vocabulary.';
+            } else {
+                message = 'Keep practicing! Focus on business-specific terms and formal language.';
+            }
+            
+            finalMessage.textContent = message;
+            finalScoreDiv.classList.add('show');
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            answered = false;
+            userAnswer = [];
+            document.getElementById('score').textContent = '0';
+            document.getElementById('quiz-container').style.display = 'block';
+            document.getElementById('final-score').classList.remove('show');
+            displayQuestion();
+        }
+
+        // Start the quiz
+        displayQuestion();
+    </script>
+</body>
+</html>
