@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spanish Verbs Quiz - Perfect English</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            background: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .logo .english {
+            color: #667eea;
+        }
+
+        nav a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .level-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 8px 20px;
+            margin: 20px auto;
+            display: block;
+            width: fit-content;
+            font-weight: bold;
+        }
+
+        .instructions {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 30px 0;
+        }
+
+        .instructions h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .progress-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .question-card {
+            background: #f8f9fa;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .question-number {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .question-text {
+            font-size: 1.2em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .spanish-word {
+            color: #667eea;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .options {
+            display: grid;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .option {
+            background: white;
+            border: 2px solid #ddd;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.1em;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            background: #f0f0ff;
+        }
+
+        .option.selected {
+            border-color: #667eea;
+            background: #e8eaff;
+        }
+
+        .option.correct {
+            border-color: #27ae60;
+            background: #d4edda;
+        }
+
+        .option.incorrect {
+            border-color: #e74c3c;
+            background: #f8d7da;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            display: none;
+            line-height: 1.6;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            border-left: 4px solid #27ae60;
+            color: #155724;
+        }
+
+        .feedback.incorrect {
+            background: #f8d7da;
+            border-left: 4px solid #e74c3c;
+            color: #721c24;
+        }
+
+        .next-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            display: none;
+            transition: background 0.3s;
+        }
+
+        .next-button:hover {
+            background: #5568d3;
+        }
+
+        .next-button.show {
+            display: block;
+        }
+
+        .final-score {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+
+        .final-score.show {
+            display: block;
+        }
+
+        .final-score h2 {
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .score-display {
+            font-size: 3em;
+            color: #667eea;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .restart-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .restart-button:hover {
+            background: #5568d3;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav {
+                margin-top: 15px;
+            }
+
+            nav a {
+                margin: 0 10px;
+            }
+
+            .question-text {
+                font-size: 1.1em;
+            }
+
+            .option {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">Perfect<span class="english">English</span></div>
+            <nav>
+                <a href="index.html">Resources</a>
+                <a href="examples.html">Examples</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Spanish Verbs Quiz</h1>
+        <p class="subtitle">Test your knowledge of essential Spanish verbs</p>
+        <div class="level-badge">Level: A2 Elementary</div>
+
+        <div class="instructions">
+            <h3>Instructions</h3>
+            <p>Answer 20 questions about the essential Spanish verbs. Some questions test translation (Spanish to English), and others test how to use the verbs correctly in English sentences. Choose the best answer for each question.</p>
+        </div>
+
+        <div class="progress-container">
+            <div>Progress: <span id="current-question">0</span>/20</div>
+            <div>Score: <span id="score">0</span>/20</div>
+        </div>
+
+        <div id="quiz-container"></div>
+
+        <div class="final-score" id="final-score">
+            <h2>Quiz Complete!</h2>
+            <div class="score-display"><span id="final-score-value">0</span>/20</div>
+            <p id="final-message"></p>
+            <button class="restart-button" onclick="restartQuiz()">Try Again</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "What does <span class='spanish-word'>tener</span> mean in English?",
+                options: ["to have", "to be", "to want", "to do"],
+                correct: 0,
+                feedback: {
+                    correct: "Correct! 'Tener' means 'to have'. Example: Tengo un perro = I have a dog.",
+                    incorrect: "Not quite. 'Tener' means 'to have'. Example: Tengo un perro = I have a dog."
+                }
+            },
+            {
+                question: "I _____ three brothers and two sisters.",
+                options: ["have", "am", "do", "can"],
+                correct: 0,
+                feedback: {
+                    correct: "Perfect! We use 'have' to show possession or relationships. This translates to 'tener' in Spanish.",
+                    incorrect: "Not quite. We use 'have' to show possession or relationships. 'I have three brothers' = 'Tengo tres hermanos'."
+                }
+            },
+            {
+                question: "What does <span class='spanish-word'>ir</span> mean in English?",
+                options: ["to go", "to see", "to come", "to arrive"],
+                correct: 0,
+                feedback: {
+                    correct: "Excellent! 'Ir' means 'to go'. Example: Voy a la escuela = I go to school.",
+                    incorrect: "Not quite. 'Ir' means 'to go'. Example: Voy a la escuela = I go to school."
+                }
+            },
+            {
+                question: "They _____ to the beach every summer.",
+                options: ["go", "come", "arrive", "leave"],
+                correct: 0,
+                feedback: {
+                    correct: "Great! 'Go' shows movement away from the speaker. In Spanish, this is 'ir'.",
+                    incorrect: "Not quite. We use 'go' for movement away from the speaker. 'They go' = 'Ellos van'."
+                }
+            },
+            {
+                question: "What does <span class='spanish-word'>hacer</span> mean in English?",
+                options: ["to do / to make", "to have", "to say", "to give"],
+                correct: 0,
+                feedback: {
+                    correct: "Perfect! 'Hacer' means both 'to do' and 'to make'. Example: Hago mi tarea = I do my homework.",
+                    incorrect: "Not quite. 'Hacer' means 'to do' or 'to make'. Example: Hago la comida = I make the food."
+                }
+            },
+            {
+                question: "What are you _____ this weekend?",
+                options: ["doing", "having", "being", "going"],
+                correct: 0,
+                feedback: {
+                    correct: "Excellent! 'What are you doing?' asks about activities or plans. In Spanish: ¿Qué haces?",
+                    incorrect: "Not quite. We ask 'What are you doing?' for activities. 'Doing' comes from 'hacer' in Spanish."
+                }
+            },
+            {
+                question: "What does <span class='spanish-word'>querer</span> mean in English?",
+                options: ["to want / to love", "to need", "to like", "to prefer"],
+                correct: 0,
+                feedback: {
+                    correct: "Correct! 'Querer' means 'to want' or 'to love'. Example: Quiero café = I want coffee.",
+                    incorrect: "Not quite. 'Querer' means 'to want' or 'to love'. It's stronger than 'like' (gustar)."
+                }
+            },
+            {
+                question: "I _____ to learn Spanish.",
+                options: ["want", "need", "like", "prefer"],
+                correct: 0,
+                feedback: {
+                    correct: "Perfect! 'Want' expresses desire. In Spanish: Quiero aprender español.",
+                    incorrect: "Not quite. While 'need', 'like', and 'prefer' could work, 'want' (querer) is the most direct translation."
+                }
+            },
+            {
+                question: "What does <span class='spanish-word'>poder</span> mean in English?",
+                options: ["can / to be able", "must", "should", "may"],
+                correct: 0,
+                feedback: {
+                    correct: "Excellent! 'Poder' means 'can' or 'to be able to'. Example: Puedo nadar = I can swim.",
+                    incorrect: "Not quite. 'Poder' means 'can' or 'to be able to'. Example: Puedo hablar inglés = I can speak English."
+                }
+            },
+            {
+                question: "She _____ speak three languages fluently.",
+                options: ["can", "must", "should", "may"],
+                correct: 0,
+                feedback: {
+                    correct: "Great! 'Can' shows ability. In Spanish: Ella puede hablar tres idiomas.",
+                    incorrect: "Not quite. We use 'can' to show ability. 'She can speak' = 'Ella puede hablar'."
+                }
+            },
+            {
+                question: "What does <span class='spanish-word'>venir</span> mean in English?",
+                options: ["to come", "to go", "to arrive", "to leave"],
+                correct: 0,
+                feedback: {
+                    correct: "Perfect! 'Venir' means 'to come' (movement toward the speaker). Example: Ven aquí = Come here.",
+                    incorrect: "Not quite. 'Venir' means 'to come' (toward the speaker), opposite of 'ir' (to go)."
+                }
+            },
+            {
+                question: "Please _____ to my house at 6 o'clock.",
+                options: ["come", "go", "arrive", "leave"],
+                correct: 0,
+                feedback: {
+                    correct: "Excellent! 'Come' shows movement toward the speaker. In Spanish: Ven a mi casa.",
+                    incorrect: "Not quite. We use 'come' for movement toward the speaker. 'Come to my house' = 'Ven a mi casa'."
+                }
+            },
+            {
+                question: "What does <span class='spanish-word'>saber</span> mean in English?",
+                options: ["to know (facts/information)", "to meet", "to understand", "to learn"],
+                correct: 0,
+                feedback: {
+                    correct: "Correct! 'Saber' means 'to know' facts or information. Example: Sé la respuesta = I know the answer.",
+                    incorrect: "Not quite. 'Saber' means 'to know' facts or how to do something. Different from 'conocer' (to know people/places)."
+                }
+            },
+            {
+                question: "Do you _____ what time the class starts?",
+                options: ["know", "meet", "understand", "learn"],
+                correct: 0,
+                feedback: {
+                    correct: "Perfect! 'Know' is for facts and information. In Spanish: ¿Sabes qué hora empieza la clase?",
+                    incorrect: "Not quite. We use 'know' for facts and information. 'Do you know?' = '¿Sabes?'"
+                }
+            },
+            {
+                question: "What does <span class='spanish-word'>trabajar</span> mean in English?",
+                options: ["to work", "to try", "to travel", "to study"],
+                correct: 0,
+                feedback: {
+                    correct: "Excellent! 'Trabajar' means 'to work'. Example: Trabajo en un hospital = I work in a hospital.",
+                    incorrect: "Not quite. 'Trabajar' means 'to work'. Example: Ella trabaja mucho = She works a lot."
+                }
+            },
+            {
+                question: "My father _____ in a bank.",
+                options: ["works", "tries", "travels", "studies"],
+                correct: 0,
+                feedback: {
+                    correct: "Great! 'Works' shows employment. In Spanish: Mi padre trabaja en un banco.",
+                    incorrect: "Not quite. We use 'works' for employment. 'He works in a bank' = 'Trabaja en un banco'."
+                }
+            },
+            {
+                question: "What does <span class='spanish-word'>vivir</span> mean in English?",
+                options: ["to live", "to leave", "to visit", "to arrive"],
+                correct: 0,
+                feedback: {
+                    correct: "Perfect! 'Vivir' means 'to live' (to reside). Example: Vivo en Madrid = I live in Madrid.",
+                    incorrect: "Not quite. 'Vivir' means 'to live' or 'to reside'. Example: ¿Dónde vives? = Where do you live?"
+                }
+            },
+            {
+                question: "Where do you _____?",
+                options: ["live", "leave", "visit", "stay"],
+                correct: 0,
+                feedback: {
+                    correct: "Excellent! 'Where do you live?' asks about residence. In Spanish: ¿Dónde vives?",
+                    incorrect: "Not quite. We ask 'Where do you live?' for residence. 'Live' = 'vivir'."
+                }
+            },
+            {
+                question: "What does <span class='spanish-word'>empezar</span> mean in English?",
+                options: ["to start / to begin", "to finish", "to continue", "to stop"],
+                correct: 0,
+                feedback: {
+                    correct: "Correct! 'Empezar' means 'to start' or 'to begin'. Example: Empiezo a las 9 = I start at 9.",
+                    incorrect: "Not quite. 'Empezar' means 'to start' or 'to begin', opposite of 'terminar' (to finish)."
+                }
+            },
+            {
+                question: "The movie _____ at 8 o'clock.",
+                options: ["starts", "finishes", "continues", "stops"],
+                correct: 0,
+                feedback: {
+                    correct: "Perfect! 'Starts' means begins. In Spanish: La película empieza a las 8.",
+                    incorrect: "Not quite. We use 'starts' for the beginning time. 'Starts' = 'empieza' in Spanish."
+                }
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        function displayQuestion() {
+            const container = document.getElementById('quiz-container');
+            const q = questions[currentQuestion];
+            
+            container.innerHTML = `
+                <div class="question-card">
+                    <div class="question-number">Question ${currentQuestion + 1}</div>
+                    <div class="question-text">${q.question}</div>
+                    <div class="options">
+                        ${q.options.map((option, index) => `
+                            <div class="option" onclick="selectAnswer(${index})">${option}</div>
+                        `).join('')}
+                    </div>
+                    <div class="feedback" id="feedback"></div>
+                    <button class="next-button" id="next-button" onclick="nextQuestion()">
+                        ${currentQuestion < questions.length - 1 ? 'Next Question' : 'Finish Quiz'}
+                    </button>
+                </div>
+            `;
+            
+            document.getElementById('current-question').textContent = currentQuestion + 1;
+            answered = false;
+        }
+
+        function selectAnswer(selectedIndex) {
+            if (answered) return;
+            
+            answered = true;
+            const q = questions[currentQuestion];
+            const options = document.querySelectorAll('.option');
+            const feedback = document.getElementById('feedback');
+            const nextButton = document.getElementById('next-button');
+            
+            options[selectedIndex].classList.add('selected');
+            
+            if (selectedIndex === q.correct) {
+                options[selectedIndex].classList.add('correct');
+                feedback.className = 'feedback correct show';
+                feedback.textContent = '✓ ' + q.feedback.correct;
+                score++;
+                document.getElementById('score').textContent = score;
+            } else {
+                options[selectedIndex].classList.add('incorrect');
+                options[q.correct].classList.add('correct');
+                feedback.className = 'feedback incorrect show';
+                feedback.textContent = '✗ ' + q.feedback.incorrect;
+            }
+            
+            options.forEach(option => option.style.cursor = 'default');
+            nextButton.classList.add('show');
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            
+            if (currentQuestion < questions.length) {
+                displayQuestion();
+            } else {
+                showFinalScore();
+            }
+        }
+
+        function showFinalScore() {
+            document.getElementById('quiz-container').style.display = 'none';
+            const finalScoreDiv = document.getElementById('final-score');
+            const finalScoreValue = document.getElementById('final-score-value');
+            const finalMessage = document.getElementById('final-message');
+            
+            finalScoreValue.textContent = score;
+            
+            let message = '';
+            const percentage = (score / questions.length) * 100;
+            
+            if (percentage === 100) {
+                message = 'Perfect! You have excellent knowledge of Spanish verbs!';
+            } else if (percentage >= 80) {
+                message = 'Great job! You know your Spanish verbs very well.';
+            } else if (percentage >= 60) {
+                message = 'Good effort! Keep practicing to improve your verb knowledge.';
+            } else {
+                message = 'Keep studying! Review the flashcards to learn these essential verbs.';
+            }
+            
+            finalMessage.textContent = message;
+            finalScoreDiv.classList.add('show');
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            answered = false;
+            document.getElementById('score').textContent = '0';
+            document.getElementById('quiz-container').style.display = 'block';
+            document.getElementById('final-score').classList.remove('show');
+            displayQuestion();
+        }
+
+        // Start the quiz
+        displayQuestion();
+    </script>
+</body>
+</html>
