@@ -122,6 +122,17 @@
             font-size: 1.1rem;
         }
 
+        .level-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
         .instructions {
             background: #f7fafc;
             padding: 1.5rem;
@@ -197,7 +208,7 @@
             padding: 1rem;
             background: #f7fafc;
             border: 2px solid #e2e8f0;
-            border-radius: 12;
+            border-radius: 6px;
             cursor: pointer;
             transition: all 0.3s;
             text-align: center;
@@ -303,7 +314,7 @@
             background: #667eea;
             color: white;
             border: none;
-            border-radius: 6;
+            border-radius: 6px;
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
@@ -387,6 +398,7 @@
             <div class="header">
                 <h1>Business Phrasal Verbs</h1>
                 <p>Choose the correct phrasal verb for each sentence</p>
+                <span class="level-badge">Level: C1 Upper Intermediate</span>
             </div>
 
             <div class="instructions">
@@ -592,7 +604,7 @@
             if (percentage === 100) {
                 finalScoreDiv.className = 'score excellent';
                 messageDiv.textContent = 'Excellent! Perfect score! You have an excellent grasp of business phrasal verbs.';
-            } else if (percentage >= 75) {
+            } else if (percentage >= 70) {
                 finalScoreDiv.className = 'score excellent';
                 messageDiv.textContent = 'Well done! You have a strong understanding of these phrasal verbs.';
             } else if (percentage >= 50) {
