@@ -395,8 +395,8 @@
             </div>
 
             <div class="progress">
-                <span class="progress-text">Progress: <span id="answered">0</span>/<span id="total">8</span></span>
-                <span class="progress-text">Score: <span id="score">0</span>/<span id="total-score">8</span></span>
+                <span class="progress-text">Progress: <span id="answered">0</span>/<span id="total">10</span></span>
+                <span class="progress-text">Score: <span id="score">0</span>/<span id="total-score">10</span></span>
             </div>
 
             <div class="exercise" id="exercise">
@@ -405,7 +405,7 @@
 
             <div class="results" id="results" style="display: none;">
                 <h2>Exercise Complete!</h2>
-                <div class="score" id="final-score">0/8</div>
+                <div class="score" id="final-score">0/10</div>
                 <p id="result-message"></p>
                 <button class="reset-btn" onclick="resetExercise()">Try Again</button>
             </div>
@@ -477,7 +477,24 @@
                 options: ["call up", "call on", "call off", "call for"],
                 correct: "call off",
                 explanation: "'Call off' means to cancel something that was planned, like a meeting, contract, or event."
+            },
+            {
+                id: 9,
+                sentence: "The manager asked us to ___________ the quarterly report by Friday.",
+                blank: "hand in",
+                options: ["hand out", "hand over", "hand in", "hand down"],
+                correct: "hand in",
+                explanation: "'Hand in' means to submit or give something to someone in authority, like a report or assignment."
+            },
+            {
+                id: 10,
+                sentence: "We need to ___________ the new software before we can use it company-wide.",
+                blank: "roll out",
+                options: ["roll back", "roll out", "roll over", "roll up"],
+                correct: "roll out",
+                explanation: "'Roll out' means to introduce or launch something gradually, especially a product or plan."
             }
+
         ];
 
         let score = 0;
