@@ -521,7 +521,7 @@
                 
                 questionDiv.innerHTML = `
                     <div class="question-number">Question ${q.id}</div>
-                    <div class="sentence">${q.sentence.replace(q.blank, '<span class="blank" id="blank-' + q.id + '">___________</span>')}</div>
+                    <div class="sentence">${q.sentence.replace('___________', '<span class="blank" id="blank-' + q.id + '">___________</span>')}</div>
                     <div class="options" id="options-${q.id}">
                         ${q.options.map(opt => `
                             <div class="option" onclick="selectAnswer(${q.id}, '${opt}')">${opt}</div>
