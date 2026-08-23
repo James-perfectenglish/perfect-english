@@ -1,662 +1,616 @@
-<!DOCTYPE html>
-<html lang="en-GB">
+<!doctype html>
+<html lang="en" translate="no">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfect English | Professional English Teaching & Resources</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <meta name="description" content="Professional English teaching with a focus on business communication and British culture. Based in Palma, Mallorca.">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfect English | Professional English Teaching & Resources</title>
-    <meta name="description" content="Professional English teaching with a focus on business communication and British culture. Based in Palma, Mallorca.">
-    
-    <!-- Open Graph / Social Media Preview -->
-    <meta property="og:title" content="Perfect English - Professional English Teaching" />
-    <meta property="og:description" content="Professional English teaching with a focus on business communication and British culture" />
-    <meta property="og:image" content="https://perfect-english.org/og-image.png" />
-    <meta property="og:url" content="https://perfect-english.org" />
-    <meta property="og:type" content="website" />
-    
-    <!-- Twitter Card (WhatsApp uses these too) -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Perfect English - Professional English Teaching" />
-    <meta name="twitter:description" content="Professional English teaching with a focus on business communication and British culture" />
-    <meta name="twitter:image" content="https://perfect-english.org/og-image.png" />
-    
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <style>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            background: #f5f7fa;
-        }
-        
-        /* Navigation */
-        nav {
-            background: white;
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        nav .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        nav .logo {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #2d3748;
-        }
-        
-        nav .logo span {
-            color: #4299e1;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        nav a {
-            text-decoration: none;
-            color: #4a5568;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        nav a:hover {
-            color: #4299e1;
-        }
-        
-        /* Hero - Platform Style */
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 4rem 2rem;
-        }
-        
-        .hero-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .hero-text h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
-        }
-        
-        .hero-text p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            line-height: 1.7;
-        }
-        
-        .hero-stats {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .stat {
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            display: block;
-        }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-        
-        .hero-features {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 15px;
-        }
-        
-        .feature-list {
-            list-style: none;
-        }
-        
-        .feature-list li {
-            padding: 0.8rem 0;
-            padding-left: 2rem;
-            position: relative;
-            font-size: 1.1rem;
-        }
-        
-        .feature-list li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            font-weight: 700;
-            color: #48bb78;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: white;
-            color: #667eea;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-        }
-        
-        /* Main Resource Grid */
-        .resources-main {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .section-header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #2d3748;
-        }
-        
-        .section-header p {
-            font-size: 1.2rem;
-            color: #718096;
-        }
-        
-        .resource-categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-        
-        .category-card {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-            cursor: pointer;
-            border: 2px solid transparent;
-        }
-        
-        .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-            border-color: #4299e1;
-        }
-        
-        .category-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .category-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: #2d3748;
-        }
-        
-        .category-card p {
-            color: #718096;
-            margin-bottom: 1rem;
-        }
-        
-        .resource-count {
-            display: inline-block;
-            background: #e6f7ff;
-            color: #0066cc;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-        
-        /* About Teaching Section */
-        .teaching-approach {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-        
-        .approach-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-        
-        .approach-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: #2d3748;
-        }
-        
-        .approach-content p {
-            font-size: 1.1rem;
-            color: #4a5568;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-        
-        .approach-highlights {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-        
-        .highlight-item {
-            padding: 1rem 0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        
-        .highlight-item:last-child {
-            border-bottom: none;
-        }
-        
-        .highlight-item h4 {
-            color: #667eea;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-        
-        .highlight-item p {
-            color: #718096;
-            font-size: 0.95rem;
-        }
-        
-        /* Testimonials - Compact */
-        .testimonials-compact {
-            background: #2d3748;
-            color: white;
-            padding: 3rem 2rem;
-        }
-        
-        .testimonials-compact .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .testimonials-compact h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            font-size: 2rem;
-        }
-        
-        .testimonial-slider {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-        }
-        
-        .testimonial-compact {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid #4299e1;
-        }
-        
-        .testimonial-compact p {
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            font-style: italic;
-            line-height: 1.6;
-        }
-        
-        .testimonial-author-compact {
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: #4299e1;
-        }
-        
-        /* Contact CTA */
-        .contact-cta {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-        
-        .contact-cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .contact-cta p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
-        
-        
-        /* Footer */
-        footer {
-            background: #1a202c;
-            color: #a0aec0;
-            text-align: center;
-            padding: 2rem;
-        }
-        
-        /* Mobile */
-        @media (max-width: 968px) {
-            .hero-content,
-            .approach-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-            
-            nav ul {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-            
-            .testimonial-slider {
-                grid-template-columns: 1fr;
-            }
-        }
-        /* Header Styles */
-        header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google" content="notranslate" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <meta name="theme-color" content="#667eea" />
+  <title>Perfect English | Personal teaching, powered by its own app</title>
+  <meta name="description" content="Personal English and Spanish teaching for professionals in Mallorca and online — backed by an app built by your teacher: daily games, real exercises and instant feedback, A1–C2." />
 
-        .header-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Perfect English — Personal teaching, powered by its own app" />
+  <meta property="og:description" content="Daily games, real exercises and instant feedback — built by your teacher, levelled A1–C2, in English and Spanish." />
+  <meta property="og:image" content="https://perfect-english.org/og-image.png" />
+  <meta property="og:url" content="https://perfect-english.org" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Perfect English — Personal teaching, powered by its own app" />
+  <meta name="twitter:description" content="Daily games, real exercises and instant feedback — built by your teacher, levelled A1–C2, in English and Spanish." />
+  <meta name="twitter:image" content="https://perfect-english.org/og-image.png" />
 
-        .logo {
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            transition: opacity 0.3s ease;
-        }
+  <style>
+    /* ---------- Tokens (taken directly from the app) ---------- */
+    :root{
+      --grad: linear-gradient(135deg, #3498DB, #667eea);
+      --blue: #3498DB;
+      --indigo: #667eea;
+      --ink: #2c3e50;
+      --muted: #718096;
+      --soft: #a0aec0;
+      --line: #e8e8f0;
+      --bg: #f7f8fc;
+      --card: #ffffff;
+      --green: #43b581;
+      --green2: #2ecc71;
+      --orange: #ed8936;
+      --r-sm: 14px;
+      --r-lg: 20px;
+      --maxw: 1080px;
+    }
 
-        .logo:hover {
-            opacity: 0.8;
-        }
+    *{ margin:0; padding:0; box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
 
-        .logo h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 0;
-        }
+    body{
+      font-family: system-ui, Avenir, Helvetica, Arial, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji';
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
 
-        .logo .perfect {
-            color: #2C3E50;
-        }
+    img, video{ display:block; max-width:100%; }
+    a{ color: var(--indigo); text-decoration:none; }
 
-        .logo .english {
-            color: #3498DB;
-        }
+    .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 
-        header nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-            margin: 0;
-            padding: 0;
-        }
+    /* ---------- Buttons ---------- */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding: 13px 26px; border-radius: var(--r-sm);
+      font-weight: 700; font-size: 1rem; font-family: inherit;
+      border: 2px solid transparent; cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+    .btn:active{ transform: translateY(1px); }
+    .btn-primary{
+      background: var(--grad); color: #fff;
+      box-shadow: 0 8px 22px rgba(102,126,234,.35);
+    }
+    .btn-primary:hover{ box-shadow: 0 10px 26px rgba(102,126,234,.45); color:#fff; }
+    .btn-ghost{
+      background: #fff; color: var(--ink); border-color: var(--line);
+    }
+    .btn-ghost:hover{ border-color: var(--indigo); color: var(--indigo); }
+    .btn-light{
+      background:#fff; color: var(--ink);
+    }
+    .btn-light:hover{ color: var(--indigo); }
 
-        header nav a {
-            text-decoration: none;
-            color: #2C3E50;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
+    /* ---------- Nav ---------- */
+    .nav{
+      position: sticky; top:0; z-index: 50;
+      background: rgba(255,255,255,.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      height: 64px;
+    }
+    .logo{ font-weight: 800; font-size: 1.15rem; color: var(--ink); letter-spacing:-.01em; }
+    .logo .dot{
+      display:inline-block; width:10px; height:10px; border-radius:3px;
+      background: var(--grad); margin-left:6px;
+    }
+    .nav-links{ display:flex; gap: 26px; align-items:center; }
+    .nav-links a{ color: var(--muted); font-weight:600; font-size:.95rem; }
+    .nav-links a:hover{ color: var(--ink); }
+    .nav .btn{ padding: 9px 18px; font-size:.92rem; }
+    @media (max-width: 760px){ .nav-links{ display:none; } }
 
-        header nav a:hover {
-            color: #3498DB;
-        }
-        /* Remove box from header navigation */
-        header nav {
-            background: none;
-            box-shadow: none;
-            padding: 0;
-        }
+    /* ---------- Sections ---------- */
+    .section{ padding: 96px 0; }
+    .section.tight{ padding: 72px 0; }
+    @media (max-width: 760px){ .section{ padding: 60px 0; } .section.tight{ padding: 48px 0; } }
 
-        header .header-container {
-            border: none;
-        }
-        /* Make navigation smaller on mobile only */
-        @media (max-width: 768px) {
-            header nav ul {
-                gap: 1rem;
-            }
-            
-            header nav a {
-                font-size: 0.85rem;
-            }
-            
-            .header-container {
-                padding: 0.75rem 1rem;
-            }
-        }
-    </style>
+    .eyebrow{
+      display:inline-block; font-size:.8rem; font-weight:700; letter-spacing:.12em;
+      text-transform: uppercase; color: var(--indigo); margin-bottom: 14px;
+    }
+    h1{ font-size: clamp(2.1rem, 5vw, 3.3rem); line-height:1.12; letter-spacing:-.02em; font-weight:800; }
+    h2{ font-size: clamp(1.6rem, 3.4vw, 2.3rem); line-height:1.15; letter-spacing:-.015em; font-weight:800; }
+    h3{ font-size: 1.08rem; font-weight:700; }
+    .sub{ color: var(--muted); font-size: 1.08rem; max-width: 640px; }
+    .center{ text-align:center; }
+    .center .sub{ margin: 14px auto 0; }
+
+    /* Wordle-tile word in the headline — the one signature flourish */
+    .tiles{ display:inline-flex; gap: 6px; vertical-align: baseline; transform: translateY(3px); }
+    .tiles span{
+      display:inline-flex; align-items:center; justify-content:center;
+      width: 1.18em; height: 1.18em; border-radius: 8px;
+      background: var(--green); color:#fff; font-weight:800;
+      font-size: .82em; text-transform: uppercase;
+      box-shadow: 0 4px 10px rgba(67,181,129,.35);
+      opacity:0; transform: scale(.6) rotateX(60deg);
+      animation: tile-in .38s cubic-bezier(.2,.7,.3,1.2) forwards;
+    }
+    .tiles span:nth-child(1){ animation-delay:.15s }
+    .tiles span:nth-child(2){ animation-delay:.27s }
+    .tiles span:nth-child(3){ animation-delay:.39s }
+    .tiles span:nth-child(4){ animation-delay:.51s }
+    .tiles span:nth-child(5){ animation-delay:.63s }
+    @keyframes tile-in{ to{ opacity:1; transform:none; } }
+    @media (prefers-reduced-motion: reduce){
+      .tiles span{ animation:none; opacity:1; transform:none; }
+    }
+
+    /* ---------- Hero ---------- */
+    .hero{ padding: 84px 0 96px; overflow:hidden; }
+    .hero-grid{
+      display:grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items:center;
+    }
+    .hero .sub{ margin-top: 18px; font-size: 1.14rem; }
+    .hero-ctas{ display:flex; gap: 14px; margin-top: 30px; flex-wrap:wrap; }
+    .chips{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 28px; }
+    .chip{
+      background:#fff; border:1px solid var(--line); color: var(--muted);
+      font-size:.85rem; font-weight:600; padding: 7px 13px; border-radius: 999px;
+    }
+    .hero-media .cap{
+      text-align:center; color: var(--soft); font-size:.85rem; margin-top:12px; font-weight:600;
+    }
+    @media (max-width: 860px){
+      .hero{ padding: 52px 0 64px; }
+      .hero-grid{ grid-template-columns: 1fr; gap: 36px; }
+      .hero-media{ max-width: 480px; margin: 0 auto; width:100%; }
+    }
+
+    /* ---------- Video slots ---------- */
+    .vslot{
+      position:relative; overflow:hidden; border-radius: var(--r-lg);
+      background: var(--grad);
+      box-shadow: 0 14px 34px rgba(44,62,80,.14);
+    }
+    .r43{ aspect-ratio: 4 / 3; }
+    .r169{ aspect-ratio: 16 / 9; }
+    .r916{ aspect-ratio: 9 / 16; }
+    .vslot video{
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    }
+    .vfallback{
+      position:absolute; inset:0; display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:8px; color:#fff;
+    }
+    .vfallback .ico{ font-size: 2rem; }
+    .vfallback .txt{ font-weight:700; letter-spacing:.02em; opacity:.95; }
+
+    /* ---------- Card grids ---------- */
+    .grid{ display:grid; gap: 26px; margin-top: 44px; }
+    .grid-3{ grid-template-columns: repeat(3, 1fr); }
+    .grid-2{ grid-template-columns: repeat(2, 1fr); }
+    .card h3{ margin-top: 14px; }
+    .card p{ color: var(--muted); font-size: .95rem; margin-top: 4px; }
+
+    @media (max-width: 860px){
+      .grid-3, .grid-2{
+        grid-auto-flow: column;
+        grid-template-columns: none;
+        grid-auto-columns: 78%;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: 4px 24px 18px;
+        margin-left: -24px; margin-right: -24px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .grid-3::-webkit-scrollbar, .grid-2::-webkit-scrollbar{ display:none; }
+      .grid .card{ scroll-snap-align: center; }
+    }
+
+    /* ---------- Tinted band ---------- */
+    .band{ background: #eef0fb; }
+
+    /* ---------- Built around you ---------- */
+    .cols{ display:grid; grid-template-columns: repeat(3,1fr); gap: 34px; margin-top: 40px; }
+    .col h3{ display:flex; align-items:center; gap:10px; }
+    .col p{ color: var(--muted); font-size:.97rem; margin-top:8px; }
+    .col .mark{
+      width: 34px; height: 34px; border-radius: 10px; flex: 0 0 auto;
+      display:inline-flex; align-items:center; justify-content:center;
+      background: var(--grad); color:#fff; font-size:1.05rem;
+    }
+    @media (max-width: 860px){ .cols{ grid-template-columns: 1fr; gap: 26px; } }
+
+    /* ---------- Business ---------- */
+    .biz{ background: var(--ink); color: #fff; }
+    .biz .eyebrow{ color: #9db4ff; }
+    .biz .sub{ color: #b9c4d6; }
+    .biz-grid{
+      display:grid; grid-template-columns: 1.5fr .8fr; gap: 30px;
+      align-items:start; margin-top: 44px;
+    }
+    .browser{
+      border-radius: var(--r-lg); overflow:hidden; background:#1f2d3d;
+      box-shadow: 0 20px 50px rgba(0,0,0,.35);
+    }
+    .browser-bar{
+      display:flex; align-items:center; gap:6px; padding: 11px 14px; background:#233242;
+    }
+    .browser-bar i{ width:10px; height:10px; border-radius:50%; background:#3c4f63; }
+    .browser-bar i:first-child{ background:#e53e3e; }
+    .browser-bar i:nth-child(2){ background:#ed8936; }
+    .browser-bar i:nth-child(3){ background:#43b581; }
+    .browser .vslot{ border-radius: 0; box-shadow:none; }
+    .biz-points{ margin-top: 34px; display:grid; grid-template-columns: repeat(3,1fr); gap: 26px; }
+    .biz-points h3{ color:#fff; }
+    .biz-points p{ color:#b9c4d6; font-size:.95rem; margin-top:6px; }
+    .biz .btn-row{ margin-top: 40px; }
+    @media (max-width: 860px){
+      .biz-grid{ grid-template-columns: 1fr; }
+      .biz-grid .side{ max-width: 300px; margin: 0 auto; width:100%; }
+      .biz-points{ grid-template-columns: 1fr; }
+    }
+
+    /* ---------- Testimonials ---------- */
+    .quotes{ display:grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 44px; }
+    .quote{
+      background: var(--card); border:1px solid var(--line);
+      border-radius: var(--r-lg); padding: 30px;
+    }
+    .quote p{ color: var(--ink); font-size: 1rem; }
+    .quote .who{ margin-top: 18px; font-weight:700; font-size:.92rem; }
+    .quote .role{ color: var(--muted); font-weight:600; font-size:.85rem; }
+    @media (max-width: 860px){ .quotes{ grid-template-columns: 1fr; } }
+
+    /* ---------- CTA band ---------- */
+    .cta{
+      background: var(--grad); color:#fff; text-align:center;
+      border-radius: var(--r-lg); padding: 64px 32px;
+      box-shadow: 0 20px 48px rgba(102,126,234,.4);
+    }
+    .cta h2{ color:#fff; }
+    .cta p{ color: rgba(255,255,255,.9); margin-top: 12px; font-size:1.08rem; }
+    .cta .btn{ margin-top: 28px; }
+
+    /* ---------- Footer ---------- */
+    footer{ padding: 44px 0 56px; color: var(--soft); font-size:.9rem; }
+    .foot{ display:flex; justify-content:space-between; gap: 18px; flex-wrap:wrap; }
+    .foot a{ color: var(--muted); font-weight:600; }
+    .foot a:hover{ color: var(--indigo); }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <a href="/" class="logo">
-                <h1>
-                    <span class="perfect">Perfect</span>
-                    <span class="english">English</span>
-                </h1>
-            </a>
-           <nav>
-    <ul>
-        <li><a href="https://app.perfect-english.org/login">App</a></li>
-        <li><a href="/examples">Examples</a></li>
-        <li><a href="/contact">Contact</a></li>
-    </ul>
-</nav>
-        </div>
-    </header>
-   
-    
-    <div class="hero" id="home">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Learn English<br>The Smart Way</h1>
-                <p>Interactive resources, personalised teaching, and real-world business English for professionals who mean business.</p>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number">10+</span>
-                        <span class="stat-label">Years Teaching</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">24/7</span>
-                        <span class="stat-label">Access</span>
-                    </div>
-                </div>
-                <a href="#contact" class="cta-button">Start Learning Today</a>
-            </div>
-            <div class="hero-features">
-                <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">What You Get</h3>
-                <ul class="feature-list">
-                    <li>Interactive grammar and vocabulary exercises</li>
-                    <li>Business English for your industry</li>
-                    <li>British culture and idiom guides</li>
-                    <li>Personalised one-on-one teaching</li>
-                    <li>Accessible anytime, on any device</li>
-                    <li>Resources tailored to your goals</li>
-                </ul>
-            </div>
-        </div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="/">Perfect English<span class="dot"></span></a>
+      <nav class="nav-links">
+        <a href="#games">Daily games</a>
+        <a href="#learning">Daily learning</a>
+        <a href="#practice">Practice</a>
+        <a href="#business">For businesses</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <a class="btn btn-primary" href="https://app.perfect-english.org/login">Open the app</a>
     </div>
-    
-    <section class="resources-main" id="resources">
-        <div class="section-header">
-            <h2>Explore Learning Resources</h2>
-            <p>Everything you need to master English for professional success</p>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">English &amp; Spanish · A1–C2 · Mallorca &amp; online</span>
+        <h1>Learn English the
+          <span class="tiles" aria-label="smart"><span>s</span><span>m</span><span>a</span><span>r</span><span>t</span></span>
+          way</h1>
+        <p class="sub">Personal teaching for professionals — backed by an app your teacher built. Daily word games, real exercises, and feedback on everything you write, every day of the year.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="/contact">Get in touch</a>
+          <a class="btn btn-ghost" href="https://app.perfect-english.org/login">Open the app</a>
         </div>
-        
-        <div class="resource-categories">
-            <div class="category-card">
-                <div class="category-icon">📚</div>
-                <h3>Grammar Library</h3>
-                <p>Comprehensive guides covering all aspects of English grammar with interactive exercises</p>
-                <span class="resource-count">Coming soon</span>
-            </div>
-            
-            <div class="category-card">
-                <div class="category-icon">💼</div>
-                <h3>Business English</h3>
-                <p>Industry-specific vocabulary, email templates, and professional communication strategies</p>
-                <span class="resource-count">Coming soon</span>
-            </div>
-            
-            <div class="category-card">
-                <div class="category-icon">🇬🇧</div>
-                <h3>British Culture</h3>
-                <p>Idioms, customs, and cultural insights that make your English sound authentically British</p>
-                <span class="resource-count">Coming soon</span>
-            </div>
-            
-   <div class="category-card">
-    <div class="category-icon">📝</div>
-    <h3>Exam Preparation</h3>
-    <p>Cambridge, IELTS, and other English proficiency exams</p>
-    <span class="resource-count">Coming soon</span>
-</div>
-            
-            <div class="category-card">
-                <div class="category-icon">🎧</div>
-                <h3>Listening Practice</h3>
-                <p>Develop your ear for British accents and improve comprehension with audio exercises</p>
-                <span class="resource-count">Coming soon</span>
-            </div>
-            
-            <div class="category-card">
-                <div class="category-icon">💬</div>
-                <h3>Conversation Skills</h3>
-                <p>Discussion topics, debate materials, and strategies for confident speaking</p>
-                <span class="resource-count">Coming soon</span>
-            </div>
+        <div class="chips">
+          <span class="chip">10+ years teaching</span>
+          <span class="chip">Levelled A1–C2</span>
+          <span class="chip">English &amp; Español</span>
+          <span class="chip">24/7, any device</span>
         </div>
-    </section>
-    
-    <section class="teaching-approach" id="about">
-        <div class="approach-grid">
-            <div class="approach-content">
-                <h2>Personalised Teaching Meets Digital Resources</h2>
-                <p>Since 2013, I've been helping professionals master English for their specific industries and goals. Based in Palma, Mallorca, I teach online via Zoom, focusing on business English and British culture for working professionals.</p>
-                <p>The resource library complements personalised one-on-one teaching sessions. While the modules provide structure and practice, our live sessions focus on your specific needs, industry vocabulary, and real-world application.</p>
-                <p>This hybrid approach means you're never wasting time in class on things you can learn independently, and you're never struggling alone with concepts that benefit from expert guidance.</p>
-            </div>
-            
-            <div class="approach-highlights">
-                <div class="highlight-item">
-                    <h4>📋 Personalised Learning Plans</h4>
-                    <p>Custom curriculum based on your industry, goals, and learning style</p>
-                </div>
-                <div class="highlight-item">
-                    <h4>⚖️ Legal English Expertise</h4>
-                    <p>Specialised teaching for legal professionals including family law, tax law, and commercial law</p>
-                </div>
-                <div class="highlight-item">
-                    <h4>🏨 Hospitality Industry Focus</h4>
-                    <p>Business English for hotel staff, from headquarters teams to guest-facing roles</p>
-                </div>
-                <div class="highlight-item">
-                    <h4>💻 Flexible Online Learning</h4>
-                    <p>Access resources 24/7, schedule live Zoom sessions when convenient</p>
-                </div>
-                <div class="highlight-item">
-                    <h4>🇬🇧 Cultural Fluency</h4>
-                    <p>Learn not just language but British communication styles and cultural context</p>
-                </div>
-            </div>
+      </div>
+      <div class="hero-media">
+        <figure class="vslot r43">
+          <div class="vfallback"><span class="ico">🐝</span><span class="txt">Perfect English app</span></div>
+          <video muted loop playsinline preload="metadata" poster="assets/posters/hero.jpg">
+            <source src="assets/video/hero.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <figcaption class="cap">Real app footage — this is what practice looks like</figcaption>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DAILY GAMES ============ -->
+  <section class="section" id="games">
+    <div class="wrap center">
+      <span class="eyebrow">Every day, something new</span>
+      <h2>Daily games. Fresh every morning.</h2>
+      <p class="sub">A new Wordle, Spelling Bee, Connections and Crossword every single day — levelled to you, in English and in Spanish. (There's a daily Wordsearch, too.)</p>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <figure class="vslot r43">
+            <div class="vfallback"><span class="ico">🟩</span><span class="txt">Wordle</span></div>
+            <video muted loop playsinline preload="none" poster="assets/posters/wordle.jpg">
+              <source src="assets/video/wordle.mp4" type="video/mp4" />
+            </video>
+          </figure>
+          <h3>Wordle</h3>
+          <p>Five letters, six guesses — with words chosen for your level, not a native's.</p>
         </div>
-    </section>
-    
-    <section class="testimonials-compact">
-        <div class="container">
-            <h2>What Students Say</h2>
-            <div class="testimonial-slider">
-               
-                <div class="testimonial-compact">
-                    <p>"Classes are very broad, ranging from discussions of current affairs to conversation, grammar, listening and writing exercises. Being a lawyer, it is also very useful to have the possibility to improve my legal vocabulary, which is uncommon."</p>
-                    <div class="testimonial-author-compact">Pedro San José, Partner, Cuatrecasas</div> 
-                    </div>
-                    <div class="testimonial-compact">
-                    <p>"Classes based around the specific vocabulary which I use in my day to day work, and which are always interesting. Lots of new ideas and ways to learn, constantly making me want to work harder."</p>
-                    <div class="testimonial-author-compact">José Davila, MD, Athlos Barbell Club</div>
-                
-                </div>
-            </div>
+
+        <div class="card">
+          <figure class="vslot r43">
+            <div class="vfallback"><span class="ico">🐝</span><span class="txt">Spelling Bee</span></div>
+            <video muted loop playsinline preload="none" poster="assets/posters/spelling-bee.jpg">
+              <source src="assets/video/spelling-bee.mp4" type="video/mp4" />
+            </video>
+          </figure>
+          <h3>Spelling Bee</h3>
+          <p>How many words can you make from seven letters? Climb the ranks to Genius — and beyond.</p>
         </div>
-    </section>
-    
-   <!-- Contact Section -->
-<section class="contact-cta" id="contact">
-    <h2>Get in Touch</h2>
-    <p>Ready to improve your English? Contact me to discuss your learning goals.</p>
-    <a href="/contact" class="cta-button">Contact Me</a>
-</section>
-    
-    <footer>
-    <p>&copy; 2026 Perfect English. Based in Palma, Mallorca. | <a href="/privacy" style="color: #3498DB;">Privacy Policy</a></p>
-</footer>
+
+        <div class="card">
+          <figure class="vslot r43">
+            <div class="vfallback"><span class="ico">🔗</span><span class="txt">Connections</span></div>
+            <video muted loop playsinline preload="none" poster="assets/posters/connections.jpg">
+              <source src="assets/video/connections.mp4" type="video/mp4" />
+            </video>
+          </figure>
+          <h3>Connections</h3>
+          <p>Sixteen words, four hidden groups. Trickier than it looks — and brilliant for vocabulary.</p>
+        </div>
+
+        <div class="card">
+          <figure class="vslot r43">
+            <div class="vfallback"><span class="ico">✏️</span><span class="txt">Crossword</span></div>
+            <video muted loop playsinline preload="none" poster="assets/posters/crossword.jpg">
+              <source src="assets/video/crossword.mp4" type="video/mp4" />
+            </video>
+          </figure>
+          <h3>Crossword</h3>
+          <p>Daily crosswords with clues written for learners — challenging, never impossible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DAILY LEARNING ============ -->
+  <section class="section band" id="learning">
+    <div class="wrap center">
+      <span class="eyebrow">Little and often</span>
+      <h2>A little learning, every day</h2>
+      <p class="sub">Not everything is a game. A new word, a grammar point and a phrasal verb — fresh every morning, levelled A1–C2, in English and Spanish.</p>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <figure class="vslot r43">
+            <div class="vfallback"><span class="ico">📖</span><span class="txt">Word of the Day</span></div>
+            <video muted loop playsinline preload="none" poster="assets/posters/wotd.jpg">
+              <source src="assets/video/wotd.mp4" type="video/mp4" />
+            </video>
+          </figure>
+          <h3>Word of the Day</h3>
+          <p>A new word at your level, with audio, examples — and a sentence challenge that gets marked.</p>
+        </div>
+
+        <div class="card">
+          <figure class="vslot r43">
+            <div class="vfallback"><span class="ico">🧩</span><span class="txt">Grammar of the Day</span></div>
+            <video muted loop playsinline preload="none" poster="assets/posters/gotd.jpg">
+              <source src="assets/video/gotd.mp4" type="video/mp4" />
+            </video>
+          </figure>
+          <h3>Grammar of the Day</h3>
+          <p>One structure a day: how it works, when to use it, and the mistake everyone makes.</p>
+        </div>
+
+        <div class="card">
+          <figure class="vslot r43">
+            <div class="vfallback"><span class="ico">🚀</span><span class="txt">Phrasal Verb of the Day</span></div>
+            <video muted loop playsinline preload="none" poster="assets/posters/pvotd.jpg">
+              <source src="assets/video/pvotd.mp4" type="video/mp4" />
+            </video>
+          </figure>
+          <h3>Phrasal Verb of the Day</h3>
+          <p>A phrasal verb a day — what it means, how it's used, and a sentence challenge of your own.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRACTICE ============ -->
+  <section class="section" id="practice">
+    <div class="wrap center">
+      <span class="eyebrow">Put it into practice</span>
+      <h2>Real practice, really marked</h2>
+      <p class="sub">Exercises with proper feedback — not just right or wrong, but what was good, what wasn't, and why.</p>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <figure class="vslot r43">
+            <div class="vfallback"><span class="ico">🔧</span><span class="txt">Fix it</span></div>
+            <video muted loop playsinline preload="none" poster="assets/posters/fix-it.jpg">
+              <source src="assets/video/fix-it.mp4" type="video/mp4" />
+            </video>
+          </figure>
+          <h3>Fix it</h3>
+          <p>Built from <em>your</em> mistakes. The app remembers what you got wrong and serves it back — a personalised chance to put things right.</p>
+        </div>
+
+        <div class="card">
+          <figure class="vslot r43">
+            <div class="vfallback"><span class="ico">🏷️</span><span class="txt">Tense Tagger</span></div>
+            <video muted loop playsinline preload="none" poster="assets/posters/tense-tagger.jpg">
+              <source src="assets/video/tense-tagger.mp4" type="video/mp4" />
+            </video>
+          </figure>
+          <h3>Tense Tagger</h3>
+          <p>Name that tense — and see exactly how English builds it, piece by piece.</p>
+        </div>
+
+        <div class="card">
+          <figure class="vslot r43">
+            <div class="vfallback"><span class="ico">💬</span><span class="txt">Real Talk</span></div>
+            <video muted loop playsinline preload="none" poster="assets/posters/real-talk.jpg">
+              <source src="assets/video/real-talk.mp4" type="video/mp4" />
+            </video>
+          </figure>
+          <h3>Real Talk</h3>
+          <p>Real conversations, real decisions. Choose each reply — a tricky guest, a tense negotiation — and see where it leads.</p>
+        </div>
+
+        <div class="card">
+          <figure class="vslot r43">
+            <div class="vfallback"><span class="ico">🎧</span><span class="txt">Listening</span></div>
+            <video muted loop playsinline preload="none" poster="assets/posters/listening.jpg">
+              <source src="assets/video/listening.mp4" type="video/mp4" />
+            </video>
+          </figure>
+          <h3>Listening</h3>
+          <p>Custom-made realistic audio, levelled tasks. Train your ear on accents you'll actually hear.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BUILT AROUND YOU ============ -->
+  <section class="section tight">
+    <div class="wrap">
+      <span class="eyebrow">Personal by design</span>
+      <h2>Built around you, not a syllabus</h2>
+      <div class="cols">
+        <div class="col">
+          <h3><span class="mark">🎯</span> Your level</h3>
+          <p>Everything in the app — every game, word and exercise — is levelled from A1 to C2. You practise at your level, and move up when you're ready.</p>
+        </div>
+        <div class="col">
+          <h3><span class="mark">💼</span> Your industry</h3>
+          <p>Specialised teaching for hospitality and legal professionals: the vocabulary of hotels, guests, contracts and clients, not generic textbook English.</p>
+        </div>
+        <div class="col">
+          <h3><span class="mark">🌍</span> Your language</h3>
+          <p>English courses for Spanish speakers — and Spanish for English speakers, with the same daily games and the same personal approach.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BUSINESS ============ -->
+  <section class="section biz" id="business">
+    <div class="wrap">
+      <span class="eyebrow">For hotels, teams &amp; academies</span>
+      <h2>See what your people are actually doing</h2>
+      <p class="sub">Group classes come with a teacher's dashboard: every student's activity, what they're getting wrong, and how they're progressing — so training budgets buy results you can see.</p>
+
+      <div class="biz-grid">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i></div>
+          <figure class="vslot r169">
+            <div class="vfallback"><span class="ico">📊</span><span class="txt">Teacher dashboard</span></div>
+            <video muted loop playsinline preload="none" poster="assets/posters/teacher-dashboard.jpg">
+              <source src="assets/video/teacher-dashboard.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </div>
+        <div class="side">
+          <figure class="vslot r916">
+            <div class="vfallback"><span class="ico">⭐</span><span class="txt">Student progress</span></div>
+            <video muted loop playsinline preload="none" poster="assets/posters/progress.jpg">
+              <source src="assets/video/progress.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </div>
+      </div>
+
+      <div class="biz-points">
+        <div>
+          <h3>Built by an experienced working teacher</h3>
+          <p>This isn't off-the-shelf software — it's purpose-built and used in real classes every day, with Mallorca's hospitality sector at its heart.</p>
+        </div>
+        <div>
+          <h3>Class plus practice</h3>
+          <p>Live sessions target what the data shows your team needs; the app keeps them practising between classes.</p>
+        </div>
+        <div>
+          <h3>Progress you can report</h3>
+          <p>Activity, accuracy and improvement over time, per person and per group — ready for HR.</p>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <a class="btn btn-light" href="/contact">Talk to me about your team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="section">
+    <div class="wrap center">
+      <span class="eyebrow">From my students</span>
+      <h2>What students say</h2>
+      <div class="quotes">
+        <div class="quote">
+          <p>“Classes are very broad, ranging from discussions of current affairs to conversation, grammar, listening and writing exercises. Being a lawyer, it is also very useful to have the possibility to improve my legal vocabulary, which is uncommon.”</p>
+          <div class="who">Pedro San José</div>
+          <div class="role">Partner, Cuatrecasas</div>
+        </div>
+        <div class="quote">
+          <p>“Classes based around the specific vocabulary which I use in my day to day work, and which are always interesting. Lots of new ideas and ways to learn, constantly making me want to work harder.”</p>
+          <div class="who">José Davila</div>
+          <div class="role">MD, Athlos Barbell Club</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="section tight">
+    <div class="wrap">
+      <div class="cta">
+        <h2>Ready to improve your English?</h2>
+        <p>Tell me about your goals — or your team's — and let's talk.</p>
+        <a class="btn btn-light" href="/contact">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="wrap foot">
+      <div>© 2026 Perfect English · Palma, Mallorca</div>
+      <div>
+        <a href="https://app.perfect-english.org/login">The app</a> &nbsp;·&nbsp;
+        <a href="/contact">Contact</a> &nbsp;·&nbsp;
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var vids = document.querySelectorAll('.vslot video');
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced || !('IntersectionObserver' in window)) return;
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          var v = e.target;
+          if (e.isIntersecting){
+            var p = v.play();
+            if (p && p.catch) p.catch(function(){});
+          } else {
+            v.pause();
+          }
+        });
+      }, { threshold: 0.35 });
+      vids.forEach(function(v){ io.observe(v); });
+    })();
+  </script>
 </body>
 </html>
